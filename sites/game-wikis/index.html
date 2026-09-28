@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GameGuide Pro - Your Ultimate Gaming Wiki</title>
+  <meta name="description" content="Complete guides, walkthroughs, tips and tricks for the latest games.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-light: #334155;
+      --ink: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+      --accent-dark: #16a34a;
+      --purple: #a855f7;
+      --line: #334155;
+      --font: "Inter", "Segoe UI", system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { margin: 0; font-weight: 700; }
+    p { margin: 0; }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, .95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 clamp(20px, 4vw, 60px);
+    }
+    .nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .nav__logo-icon { font-size: 26px; }
+    .nav__links { display: flex; gap: 24px; }
+    .nav__links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color .2s;
+      font-weight: 500;
+    }
+    .nav__links a:hover { color: var(--ink); }
+    .nav__search {
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      width: 240px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px clamp(20px, 4vw, 60px);
+      text-align: center;
+      background: linear-gradient(180deg, rgba(34, 197, 94, .1), transparent);
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .hero__search {
+      max-width: 560px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero__search input {
+      width: 100%;
+      padding: 16px 60px 16px 20px;
+      background: var(--surface);
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      color: var(--ink);
+      font-size: 16px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .hero__search input:focus { border-color: var(--accent); }
+    .hero__search input::placeholder { color: #64748b; }
+    .hero__search button {
+      position: absolute;
+      right: 8px; top: 50%;
+      transform: translateY(-50%);
+      padding: 10px 16px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Featured Games */
+    section { padding: 60px clamp(20px, 4vw, 60px); }
+    .section__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 32px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section__title { font-size: 28px; }
+    .section__more {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .game-card {
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      transition: all .3s;
+    }
+    .game-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .game-card__img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .game-card__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+    .game-card:hover .game-card__img img { transform: scale(1.05); }
+    .game-card__badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      padding: 4px 10px;
+      background: var(--accent);
+      color: white;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .game-card__body { padding: 16px; }
+    .game-card h3 { font-size: 17px; margin-bottom: 6px; }
+    .game-card__meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .game-card__rating { color: #fbbf24; font-weight: 600; }
+
+    /* Categories */
+    .categories {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      justify-content: center;
+    }
+    .cat-tag {
+      padding: 8px 18px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--muted);
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .cat-tag:hover, .cat-tag.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* Popular Articles */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .article-card {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      transition: all .2s;
+    }
+    .article-card:hover {
+      border-color: var(--accent);
+    }
+    .article-card__img {
+      width: 100px;
+      flex-shrink: 0;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .article-card__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .article-card__body { flex: 1; min-width: 0; }
+    .article-card__cat {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .article-card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .article-card__meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px clamp(20px, 4vw, 60px) 30px;
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto 30px;
+    }
+    .footer__brand h4 {
+      font-size: 22px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .footer__brand p { font-size: 14px; color: var(--muted); }
+    .footer__col h5 {
+      font-size: 14px;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+    .footer__col a {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      transition: color .2s;
+    }
+    .footer__col a:hover { color: var(--accent); }
+    .footer__bottom {
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .nav__links, .nav__search { display: none; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <div class="nav__logo">
+        <span class="nav__logo-icon">🎮</span>
+        GameGuide Pro
+      </div>
+      <div class="nav__links">
+        <a href="#">Guides</a>
+        <a href="#">Tier Lists</a>
+        <a href="#">Codes</a>
+        <a href="#">News</a>
+      </div>
+      <div class="nav__search">🔍 Search guides...</div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h1>Your Ultimate <span>Gaming Wiki</span></h1>
+      <p>Complete guides, walkthroughs, tier lists, and tips for the latest games. Level up your gameplay today.</p>
+      <div class="hero__search">
+        <input type="text" placeholder="Search for game guides, tips, codes...">
+        <button>Search</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="section__header">
+        <h2 class="section__title">🔥 Trending Games</h2>
+        <a href="#" class="section__more">View All →</a>
+      </div>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-card__img">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80" alt="Game 1">
+            <span class="game-card__badge">HOT</span>
+          </div>
+          <div class="game-card__body">
+            <h3>Elden Ring: Shadow of the Erdtree</h3>
+            <div class="game-card__meta">
+              <span>RPG · Action</span>
+              <span class="game-card__rating">⭐ 4.9</span>
+            </div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-card__img">
+            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&q=80" alt="Game 2">
+            <span class="game-card__badge" style="background: var(--purple);">NEW</span>
+          </div>
+          <div class="game-card__body">
+            <h3>Black Myth: Wukong</h3>
+            <div class="game-card__meta">
+              <span>Action · Souls-like</span>
+              <span class="game-card__rating">⭐ 4.8</span>
+            </div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-card__img">
+            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=600&q=80" alt="Game 3">
+          </div>
+          <div class="game-card__body">
+            <h3>Baldur's Gate 3</h3>
+            <div class="game-card__meta">
+              <span>RPG · Strategy</span>
+              <span class="game-card__rating">⭐ 4.9</span>
+            </div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-card__img">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80" alt="Game 4">
+          </div>
+          <div class="game-card__body">
+            <h3>League of Legends</h3>
+            <div class="game-card__meta">
+              <span>MOBA · Competitive</span>
+              <span class="game-card__rating">⭐ 4.6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="categories">
+        <span class="cat-tag active">All Guides</span>
+        <span class="cat-tag">Builds</span>
+        <span class="cat-tag">Tier Lists</span>
+        <span class="cat-tag">Codes</span>
+        <span class="cat-tag">Walkthroughs</span>
+        <span class="cat-tag">Tips & Tricks</span>
+        <span class="cat-tag">Beginner Guides</span>
+        <span class="cat-tag">Endgame</span>
+      </div>
+      
+      <div class="section__header">
+        <h2 class="section__title">📚 Popular Guides</h2>
+        <a href="#" class="section__more">See All →</a>
+      </div>
+      <div class="articles-grid">
+        <div class="article-card">
+          <div class="article-card__img">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=200&q=80" alt="">
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__cat">Build Guide</div>
+            <h3>Elden Ring: Best Strength Build for Early Game</h3>
+            <div class="article-card__meta">5 min read · Sep 25, 2026</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card__img">
+            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=200&q=80" alt="">
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__cat">Tier List</div>
+            <h3>Black Myth Wukong: All Bosses Ranked by Difficulty</h3>
+            <div class="article-card__meta">8 min read · Sep 24, 2026</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card__img">
+            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=200&q=80" alt="">
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__cat">Beginner Guide</div>
+            <h3>Baldur's Gate 3: 10 Tips for New Players</h3>
+            <div class="article-card__meta">6 min read · Sep 23, 2026</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card__img">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&q=80" alt="">
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__cat">Champion Guide</div>
+            <h3>LoL Season 14: Best ADC Champions Tier List</h3>
+            <div class="article-card__meta">4 min read · Sep 22, 2026</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card__img">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=200&q=80" alt="">
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__cat">Codes</div>
+            <h3>Elden Ring DLC: All New Ashes of War Locations</h3>
+            <div class="article-card__meta">12 min read · Sep 21, 2026</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card__img">
+            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=200&q=80" alt="">
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__cat">Walkthrough</div>
+            <h3>Black Myth Wukong: Chapter 3 Complete Walkthrough</h3>
+            <div class="article-card__meta">20 min read · Sep 20, 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>🎮 GameGuide Pro</h4>
+        <p>Your ultimate gaming wiki. Complete guides, tier lists, and tips for the latest games.</p>
+      </div>
+      <div class="footer__col">
+        <h5>Games</h5>
+        <a href="#">Elden Ring</a>
+        <a href="#">Black Myth</a>
+        <a href="#">BG3</a>
+        <a href="#">LoL</a>
+      </div>
+      <div class="footer__col">
+        <h5>Content</h5>
+        <a href="#">Guides</a>
+        <a href="#">Tier Lists</a>
+        <a href="#">Codes</a>
+        <a href="#">News</a>
+      </div>
+      <div class="footer__col">
+        <h5>About</h5>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      © 2026 GameGuide Pro · This is a design demo site
+    </div>
+  </footer>
+</body>
+</html>

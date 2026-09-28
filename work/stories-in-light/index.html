@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>stories in light · Leo</title>
+  <meta name="description" content="鼠标就是手电筒：光斑滑过人像，照到的地方露出金色面具和暗纹墙纸。">
+  <meta name="theme-color" content="#06082f">
+  <link rel="icon" type="image/png" href="../../img/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="topbar">
+    <a href="../../" class="topbar__name">
+      <span>Leo</span>
+      <span>独立开发者</span>
+    </a>
+    <nav class="topbar__nav">
+      <a href="../../">首页</a>
+      <a href="../" aria-current="page">作品</a>
+    </nav>
+    <nav class="topbar__nav">
+      <a href="../../about/">关于</a>
+      <a href="../../blog/">博客</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="topbar__avail">
+        <span class="status-dot"></span>
+        <span>接单中</span>
+      </span>
+      <span class="topbar__time" data-beijing-time>--:--</span>
+    </div>
+    <a href="#contact" class="topbar__lang">✉</a>
+  </header>
+
+  <div class="menu-btn-wrap is-visible">
+    <button class="menu-btn" aria-label="打开菜单">
+      <span class="menu-btn__lines"><span></span><span></span></span>
+    </button>
+  </div>
+  <div class="menu-overlay"></div>
+  <aside class="menu">
+    <div>
+      <div class="menu__label">导航</div>
+      <nav class="menu__links">
+        <a href="../../">首页</a>
+        <a href="../" aria-current="page">作品</a>
+        <a href="../../about/">关于</a>
+        <a href="../../blog/">博客</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+    <div class="menu__foot">
+      <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <section class="case-head">
+      <h1 class="page-title">stories in light</h1>
+      <dl class="case-meta">
+        <div>
+          <dt>类型</dt>
+          <dd>摄影师作品集</dd>
+        </div>
+        <div>
+          <dt>分工</dt>
+          <dd>设计与开发</dd>
+        </div>
+        <div>
+          <dt>年份</dt>
+          <dd>2026</dd>
+        </div>
+        <div>
+          <dt>技术</dt>
+          <dd>HTML / CSS · Canvas · 鼠标追踪</dd>
+        </div>
+      </dl>
+    </section>
+
+    <figure class="case-media">
+      <img src="../../img/work/stories.webp" alt="stories in light 摄影师作品集预览">
+    </figure>
+
+    <section class="case-body">
+      <h2 class="case-body__summary">摄影师作品集网站，鼠标就是手电筒——光斑滑过人像，照到的地方露出金色面具和暗纹墙纸。</h2>
+      <div class="case-body__text">
+        <p>这是给一位时尚摄影师做的个人作品集。她的作品风格偏暗调、戏剧化，很多照片都有强烈的光影对比。</p>
+        <p>首屏的创意是"黑暗中的一束光"——整个页面几乎是黑的，只有鼠标（或手指）所在的位置有一个圆形光斑。移动鼠标，光斑会跟着走，照到的地方才会显示出照片的细节。</p>
+        <p>技术上用了两层图片叠加：底层是正常的照片，上层是一张调暗的蒙版。通过 Canvas 的 clip 功能，把鼠标位置的圆形区域"挖空"，露出底下的原图。光斑边缘有自然的羽化过渡，不会显得生硬。</p>
+        <p>作品集页面用了瀑布流布局，但不是传统的 masonry，而是每一行高度一致的"画廊墙"风格。点击照片会打开全屏查看器，左右滑动切换，支持键盘操作。</p>
+        <p>关于页用了打字机效果，摄影师的自述一段一段地"写"出来，配合光标闪烁，很有氛围感。</p>
+      </div>
+    </section>
+
+    <div class="case-link">
+      <a href="../../sites/stories-in-light/" class="pill">访问网站 ↗</a>
+    </div>
+
+    <a href="airlines/" class="case-next">
+      <div class="case-next__label">下一个作品</div>
+      <div class="case-next__title">Airlines →</div>
+    </a>
+  </main>
+
+  <div class="footer-curve"><div class="footer-curve__shape"></div></div>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer__head">
+      <h2 class="footer__title">
+        <span class="footer__title-row">
+          一起做点
+          <span class="footer__avatar"><img src="../../img/leo-avatar.jpg" alt="Leo 的头像"></span>
+        </span>
+        <span>东西吧</span>
+      </h2>
+    </div>
+    <div class="footer__line">
+      <div class="footer__cta">
+        <a href="mailto:shady.pgone@gmail.com" class="btn-round btn-round--accent">联系我</a>
+      </div>
+    </div>
+    <div class="footer__pills">
+      <a href="mailto:shady.pgone@gmail.com" class="pill pill--dark">shady.pgone@gmail.com</a>
+    </div>
+    <div class="footer__meta">
+      <div class="footer__meta-group">
+        <div><h3>版本</h3><span>v1.0</span></div>
+        <div><h3>北京时间</h3><span data-beijing-time>--:--</span></div>
+      </div>
+      <div class="footer__meta-group">
+        <div>
+          <h3>社交</h3>
+          <div class="footer__socials">
+            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

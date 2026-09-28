@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>台球延长线 - 你的台球瞄准辅助</title>
+  <meta name="description" content="实时识别屏幕画面，智能计算瞄准线，帮你提升台球技术。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #0a1f14;
+      --felt: #0d4f2c;
+      --felt-dark: #0a3d22;
+      --wood: #8b5a2b;
+      --gold: #ffd700;
+      --ink: #ffffff;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+      --line: rgba(255, 255, 255, .1);
+      --font: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { margin: 0; font-weight: 700; }
+    p { margin: 0; }
+
+    /* Pool table pattern bg */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(34, 197, 94, .1), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 90, 43, .1), transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px clamp(20px, 4vw, 60px);
+      background: rgba(10, 31, 20, .9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .nav__logo-icon {
+      width: 36px; height: 36px;
+      background: var(--felt);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      border: 2px solid var(--wood);
+    }
+    .nav__cta {
+      padding: 10px 22px;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all .2s;
+    }
+    .nav__cta:hover {
+      background: #16a34a;
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 120px 20px 80px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero__badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(34, 197, 94, .15);
+      color: var(--accent);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 60px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero__desc {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .hero__btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .btn--primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+    }
+    .btn--primary:hover { background: #16a34a; transform: translateY(-2px); }
+    .btn--outline {
+      background: transparent;
+      color: white;
+      border: 1px solid var(--line);
+    }
+    .btn--outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* App demo */
+    .demo {
+      max-width: 800px;
+      margin: 60px auto;
+      position: relative;
+    }
+    .demo-table {
+      aspect-ratio: 2/1;
+      background: var(--felt);
+      border-radius: 24px;
+      border: 12px solid var(--wood);
+      box-shadow: 
+        inset 0 0 60px rgba(0,0,0,.3),
+        0 20px 60px rgba(0,0,0,.5);
+      position: relative;
+      overflow: hidden;
+    }
+    .demo-table::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 2px solid rgba(255,215,0,.3);
+      border-radius: 12px;
+    }
+    /* Balls */
+    .ball {
+      position: absolute;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      box-shadow: inset -4px -4px 8px rgba(0,0,0,.3), 0 2px 4px rgba(0,0,0,.4);
+    }
+    .ball--cue { top: 50%; left: 20%; background: white; transform: translate(-50%, -50%); }
+    .ball--1 { top: 35%; right: 25%; background: #fbbf24; transform: translate(-50%, -50%); }
+    .ball--2 { top: 55%; right: 30%; background: #3b82f6; transform: translate(-50%, -50%); }
+    .ball--3 { top: 45%; right: 20%; background: #ef4444; transform: translate(-50%, -50%); }
+    
+    /* Aim line */
+    .aim-line {
+      position: absolute;
+      top: 50%;
+      left: calc(20% + 14px);
+      right: 20%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transform: translateY(-50%);
+      animation: aimPulse 2s ease-in-out infinite;
+    }
+    @keyframes aimPulse {
+      0%, 100% { opacity: .5; }
+      50% { opacity: 1; }
+    }
+    .aim-dot {
+      position: absolute;
+      top: 50%;
+      right: 20%;
+      width: 12px; height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translate(50%, -50%);
+      box-shadow: 0 0 12px var(--gold);
+      animation: dotPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%, 100% { transform: translate(50%, -50%) scale(1); }
+      50% { transform: translate(50%, -50%) scale(1.3); }
+    }
+
+    /* Features */
+    section { padding: 80px clamp(20px, 4vw, 60px); }
+    .section__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+    .section__label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 16px;
+    }
+    .section__desc { font-size: 16px; color: var(--muted); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      padding: 28px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      text-align: center;
+      transition: all .3s;
+    }
+    .feature-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .feature-card__icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 20px;
+      background: var(--felt);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      border: 3px solid var(--wood);
+    }
+    .feature-card h3 { font-size: 20px; margin-bottom: 10px; }
+    .feature-card p { font-size: 15px; color: var(--muted); }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .step {
+      text-align: center;
+      padding: 32px 24px;
+    }
+    .step__num {
+      width: 48px; height: 48px;
+      margin: 0 auto 16px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .step h3 { font-size: 18px; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--muted); }
+
+    /* Screenshots */
+    .screenshots {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .phone {
+      width: 240px;
+      background: #1a1a1a;
+      border-radius: 32px;
+      padding: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    .phone__screen {
+      aspect-ratio: 9/16;
+      background: var(--felt);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+    .phone__screen-header {
+      padding: 16px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--line);
+    }
+    .phone__screen-body {
+      padding: 20px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Download CTA */
+    .cta {
+      text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(34, 197, 94, .1));
+    }
+    .cta h2 {
+      font-size: clamp(32px, 4vw, 44px);
+      margin-bottom: 16px;
+    }
+    .cta p {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta__badges {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: white;
+      color: black;
+      border-radius: 12px;
+      transition: transform .2s;
+    }
+    .badge:hover { transform: translateY(-2px); }
+    .badge__icon { font-size: 28px; }
+    .badge__text { text-align: left; }
+    .badge__text small { font-size: 11px; display: block; }
+    .badge__text strong { font-size: 16px; display: block; }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px 24px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer__links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .footer__links a { transition: color .2s; }
+    .footer__links a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .steps { grid-template-columns: 1fr; }
+      .demo-table { border-width: 8px; border-radius: 16px; }
+      .ball { width: 20px; height: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <div class="nav__logo">
+        <div class="nav__logo-icon">🎱</div>
+        台球延长线
+      </div>
+      <a href="#download" class="nav__cta">立即下载</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero__badge">🎱 智能瞄准辅助</div>
+      <h1>让每一颗球<br>都<span>精准入袋</span></h1>
+      <p class="hero__desc">实时识别屏幕画面，智能计算瞄准线和翻袋路径。悬浮窗显示，不修改游戏数据，安全稳定。</p>
+      <div class="hero__btns">
+        <a href="#download" class="btn btn--primary">立即下载</a>
+        <a href="#features" class="btn btn--outline">了解功能</a>
+      </div>
+
+      <div class="demo">
+        <div class="demo-table">
+          <div class="ball ball--cue"></div>
+          <div class="ball ball--1"></div>
+          <div class="ball ball--2"></div>
+          <div class="ball ball--3"></div>
+          <div class="aim-line"></div>
+          <div class="aim-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="section__header">
+        <div class="section__label">核心功能</div>
+        <h2 class="section__title">功能强大，操作简单</h2>
+        <p class="section__desc">多种辅助模式，从新手到高手都能用。</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">📏</div>
+          <h3>精准瞄准线</h3>
+          <p>实时计算母球行进路线，一直延伸到库边或目标球。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">↩️</div>
+          <h3>翻袋计算</h3>
+          <p>自动计算反弹角度，一库、两库翻袋路线一目了然。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🎯</div>
+          <h3>进球辅助</h3>
+          <p>显示目标球进袋的瞄准点，新手也能稳稳进球。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">⚡</div>
+          <h3>毫秒级响应</h3>
+          <p>单帧处理不到 8ms，完全跟得上游戏节奏。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔒</div>
+          <h3>安全不封号</h3>
+          <p>悬浮窗显示，不修改游戏数据，不会被检测为外挂。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📱</div>
+          <h3>全平台支持</h3>
+          <p>支持主流台球手游，2D/3D 都能识别。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section__header">
+        <div class="section__label">使用方法</div>
+        <h2 class="section__title">三步开始使用</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <h3>下载安装</h3>
+          <p>下载 App 并安装，开启悬浮窗权限。</p>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <h3>打开游戏</h3>
+          <p>启动台球游戏，从侧边栏调出辅助功能。</p>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <h3>开始使用</h3>
+          <p>瞄准线自动显示，选择需要的辅助模式。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section__header">
+        <div class="section__label">应用截图</div>
+        <h2 class="section__title">简洁界面，即开即用</h2>
+      </div>
+      <div class="screenshots">
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="phone__screen-header">🎱 台球延长线</div>
+            <div class="phone__screen-body">
+              <p style="color: var(--accent); font-weight: 600; margin-bottom: 12px;">● 运行中</p>
+              <p>瞄准线：开启</p>
+              <p>翻袋线：开启</p>
+              <p>进球点：关闭</p>
+              <p style="margin-top: 12px; font-size: 11px;">帧率：60 FPS</p>
+            </div>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="phone__screen-header">⚙ 设置</div>
+            <div class="phone__screen-body">
+              <p>线条颜色</p>
+              <p style="margin-bottom: 12px;">线条粗细</p>
+              <p>识别灵敏度</p>
+              <p style="margin-bottom: 12px;">显示模式</p>
+              <p>启动游戏</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="download">
+      <h2>准备好提升球技了吗？</h2>
+      <p>免费下载，基础功能永久免费。</p>
+      <div class="cta__badges">
+        <a href="#" class="badge">
+          <span class="badge__icon">🤖</span>
+          <span class="badge__text">
+            <small>下载自</small>
+            <strong>Google Play</strong>
+          </span>
+        </a>
+        <a href="#" class="badge">
+          <span class="badge__icon">📦</span>
+          <span class="badge__text">
+            <small>直接下载</small>
+            <strong>APK 安装包</strong>
+          </span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer__links">
+      <a href="#">功能介绍</a>
+      <a href="#">使用帮助</a>
+      <a href="#">隐私政策</a>
+      <a href="#">联系我们</a>
+    </div>
+    © 2026 台球延长线 · 本站为设计案例，App 为演示用途
+  </footer>
+</body>
+</html>

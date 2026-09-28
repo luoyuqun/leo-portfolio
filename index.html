@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leo · 独立开发者</title>
+  <meta name="description" content="Leo，独立开发者。帮你把想法做成真正能上线的网站、小程序和 App。">
+  <meta name="theme-color" content="#06082f">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <!-- Top Navigation -->
+  <header class="topbar topbar--on-dark">
+    <a href="./" class="topbar__name" aria-label="Leo 独立开发者">
+      <span>Leo</span>
+      <span>独立开发者</span>
+    </a>
+    <nav class="topbar__nav" aria-label="主导航">
+      <a href="./" aria-current="page">首页</a>
+      <a href="work/">作品</a>
+    </nav>
+    <nav class="topbar__nav" aria-label="次级导航">
+      <a href="about/">关于</a>
+      <a href="blog/">博客</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="topbar__avail">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>接单中</span>
+      </span>
+      <span class="topbar__time" data-beijing-time>--:--</span>
+    </div>
+    <a href="#contact" class="topbar__lang" aria-label="联系我">✉</a>
+  </header>
+
+  <!-- Mobile Menu Button -->
+  <div class="menu-btn-wrap">
+    <button class="menu-btn" aria-label="打开菜单" aria-expanded="false">
+      <span class="menu-btn__lines" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="menu-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Menu Panel -->
+  <aside class="menu" aria-label="菜单">
+    <div>
+      <div class="menu__label">导航</div>
+      <nav class="menu__links">
+        <a href="./" aria-current="page">首页</a>
+        <a href="work/">作品</a>
+        <a href="about/">关于</a>
+        <a href="blog/">博客</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+    <div class="menu__foot">
+      <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero__bg-grid" aria-hidden="true"></div>
+      <div class="hero__bg-glow" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--3" aria-hidden="true"></div>
+      <div class="hero__content">
+        <h1 class="hero__title" data-animate-chars>
+          <span>Leo — 独立开发者</span>
+          <span>做网站 · 做小程序 · 做 App</span>
+        </h1>
+        <p class="hero__subtitle">帮你把想法做成真正能上线、能被用起来的网站和产品。</p>
+      </div>
+
+      <!-- Gallery Carousel -->
+      <div class="gallery" aria-label="近期作品">
+        <div class="gallery__track">
+          <a href="work/roastery/" class="gallery__card">
+            <span class="gallery__label">焙序咖啡 — 咖啡品牌官网</span>
+            <span class="gallery__media">
+              <img src="img/work/card-roastery.webp" alt="一家自家烘焙咖啡馆的官网：首屏是一条实时画出来的烘焙曲线，豆单做成了豆包标签。" loading="eager">
+            </span>
+          </a>
+          <a href="work/warehouse/" class="gallery__card">
+            <span class="gallery__label">仓衡 WMS — B2B 软件官网</span>
+            <span class="gallery__media">
+              <img src="img/work/card-warehouse.webp" alt="一款仓储管理软件的官网：首屏是用代码实时绘制的仓库画面，拣货员在货架间按路线走动。" loading="eager">
+            </span>
+          </a>
+          <a href="work/plety/" class="gallery__card">
+            <span class="gallery__label">Plety — AI SaaS 落地页</span>
+            <span class="gallery__media">
+              <img src="img/work/card-plety.webp" alt="一个 AI 产品的完整落地页：流光背景视频、滚动渐入、可以真的打字和播放的产品界面。" loading="eager">
+            </span>
+          </a>
+          <a href="work/stories-in-light/" class="gallery__card">
+            <span class="gallery__label">stories in light — 摄影师作品集</span>
+            <span class="gallery__media">
+              <img src="img/work/card-stories-in-light.webp" alt="鼠标就是手电筒：光斑滑过人像，照到的地方露出金色面具和暗纹墙纸。" loading="eager">
+            </span>
+          </a>
+          <a href="work/airlines/" class="gallery__card">
+            <span class="gallery__label">Airlines — 旅行社官网</span>
+            <span class="gallery__media">
+              <img src="img/work/card-airlines.webp" alt="首屏镜头穿过舷窗，往下所有照片都框在舷窗里，结尾的晚霞随滚动放大到整屏。" loading="lazy">
+            </span>
+          </a>
+          <a href="work/game-wikis/" class="gallery__card">
+            <span class="gallery__label">出海游戏 Wiki 站</span>
+            <span class="gallery__media">
+              <img src="img/work/card-game-wikis.webp" alt="面向海外玩家的新游戏攻略站，从选词、建站到上线、收录都是自己做的。" loading="lazy">
+            </span>
+          </a>
+          <!-- Duplicate for infinite scroll effect -->
+          <a href="work/roastery/" class="gallery__card" aria-hidden="true">
+            <span class="gallery__label">焙序咖啡 — 咖啡品牌官网</span>
+            <span class="gallery__media">
+              <img src="img/work/card-roastery.webp" alt="" loading="lazy">
+            </span>
+          </a>
+          <a href="work/warehouse/" class="gallery__card" aria-hidden="true">
+            <span class="gallery__label">仓衡 WMS — B2B 软件官网</span>
+            <span class="gallery__media">
+              <img src="img/work/card-warehouse.webp" alt="" loading="lazy">
+            </span>
+          </a>
+          <a href="work/plety/" class="gallery__card" aria-hidden="true">
+            <span class="gallery__label">Plety — AI SaaS 落地页</span>
+            <span class="gallery__media">
+              <img src="img/work/card-plety.webp" alt="" loading="lazy">
+            </span>
+          </a>
+          <a href="work/stories-in-light/" class="gallery__card" aria-hidden="true">
+            <span class="gallery__label">stories in light — 摄影师作品集</span>
+            <span class="gallery__media">
+              <img src="img/work/card-stories-in-light.webp" alt="" loading="lazy">
+            </span>
+          </a>
+          <a href="work/airlines/" class="gallery__card" aria-hidden="true">
+            <span class="gallery__label">Airlines — 旅行社官网</span>
+            <span class="gallery__media">
+              <img src="img/work/card-airlines.webp" alt="" loading="lazy">
+            </span>
+          </a>
+          <a href="work/game-wikis/" class="gallery__card" aria-hidden="true">
+            <span class="gallery__label">出海游戏 Wiki 站</span>
+            <span class="gallery__media">
+              <img src="img/work/card-game-wikis.webp" alt="" loading="lazy">
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro reveal">
+      <div>
+        <p class="intro__statement">
+          帮你把想法做成真正能上线、能被用起来的网站和产品。从需求到上线一个人负责，沟通不绕弯，交付快。
+        </p>
+      </div>
+      <div class="intro__side">
+        <p>产品经理出身，懂需求也懂实现。用 AI 编程把开发周期压到很短。</p>
+        <a href="about/" class="btn-round">关于我</a>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills reveal">
+      <div class="skills__label">技术栈</div>
+      <h2 class="skills__title">擅长的<br>技术和工具</h2>
+      <div class="skills-cloud" id="skillsCloud">
+        <span class="skill-tag skill-tag--primary" data-skill>HTML5</span>
+        <span class="skill-tag skill-tag--accent" data-skill>CSS3 / Sass</span>
+        <span class="skill-tag" data-skill>JavaScript</span>
+        <span class="skill-tag skill-tag--primary" data-skill>TypeScript</span>
+        <span class="skill-tag" data-skill>Vue.js</span>
+        <span class="skill-tag skill-tag--accent" data-skill>React</span>
+        <span class="skill-tag" data-skill>Node.js</span>
+        <span class="skill-tag skill-tag--outline" data-skill>微信小程序</span>
+        <span class="skill-tag" data-skill>Python</span>
+        <span class="skill-tag skill-tag--primary" data-skill>Figma</span>
+        <span class="skill-tag" data-skill>Tailwind CSS</span>
+        <span class="skill-tag skill-tag--outline" data-skill>Git</span>
+        <span class="skill-tag" data-skill>Webpack / Vite</span>
+        <span class="skill-tag skill-tag--accent" data-skill>SEO</span>
+        <span class="skill-tag" data-skill>MySQL</span>
+        <span class="skill-tag skill-tag--outline" data-skill>Docker</span>
+      </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work reveal">
+      <div class="work__label">近期作品</div>
+      <div class="work-list reveal-stagger">
+        <a href="work/roastery/" class="work-row">
+          <h3 class="work-row__name">焙序咖啡</h3>
+          <span class="work-row__type">咖啡品牌官网 · 2026</span>
+        </a>
+        <a href="work/warehouse/" class="work-row">
+          <h3 class="work-row__name">仓衡 WMS</h3>
+          <span class="work-row__type">B2B 软件官网 · 2026</span>
+        </a>
+        <a href="work/plety/" class="work-row">
+          <h3 class="work-row__name">Plety</h3>
+          <span class="work-row__type">AI SaaS 落地页 · 2026</span>
+        </a>
+        <a href="work/stories-in-light/" class="work-row">
+          <h3 class="work-row__name">stories in light</h3>
+          <span class="work-row__type">摄影师作品集 · 2026</span>
+        </a>
+      </div>
+      <div class="work-more">
+        <a href="work/" class="pill">全部作品 <sup>8</sup></a>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats reveal">
+      <div class="stats__inner">
+        <div class="stats__label">数字说话</div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-item__number"><span data-count="50">0</span><sup>+</sup></div>
+            <div class="stat-item__label">交付项目</div>
+            <div class="stat-item__desc">从官网到 App，覆盖多个行业</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-item__number"><span data-count="5">0</span><sup>+</sup></div>
+            <div class="stat-item__label">年开发经验</div>
+            <div class="stat-item__desc">产品经理转独立开发</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-item__number"><span data-count="100">0</span><sup>%</sup></div>
+            <div class="stat-item__label">客户好评</div>
+            <div class="stat-item__desc">每个项目都认真交付</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-item__number"><span data-count="7">0</span><sup>×24</sup></div>
+            <div class="stat-item__label">响应速度</div>
+            <div class="stat-item__desc">消息基本当天回复</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Curve -->
+  <div class="footer-curve" aria-hidden="true">
+    <div class="footer-curve__shape"></div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" id="contact">
+    <div class="footer__head">
+      <h2 class="footer__title">
+        <span class="footer__title-row">
+          一起做点
+          <span class="footer__avatar">
+            <img src="img/leo-avatar.jpg" alt="Leo 的头像">
+          </span>
+        </span>
+        <span>东西吧</span>
+      </h2>
+    </div>
+
+    <div class="footer__line">
+      <div class="footer__cta">
+        <a href="mailto:shady.pgone@gmail.com" class="btn-round btn-round--accent">联系我</a>
+      </div>
+    </div>
+
+    <div class="footer__pills">
+      <a href="mailto:shady.pgone@gmail.com" class="pill pill--dark">shady.pgone@gmail.com</a>
+    </div>
+
+    <div class="footer__signature">
+      <img src="img/leo-signature.svg" alt="Leo 的签名">
+    </div>
+
+    <div class="footer__meta">
+      <div class="footer__meta-group">
+        <div>
+          <h3>版本</h3>
+          <span>v1.0</span>
+        </div>
+        <div>
+          <h3>北京时间</h3>
+          <span data-beijing-time>--:--</span>
+        </div>
+      </div>
+      <div class="footer__meta-group">
+        <div>
+          <h3>社交</h3>
+          <div class="footer__socials">
+            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>仓衡 WMS · 让仓库管起来更轻松</title>
+  <meta name="description" content="面向中小企业的仓储管理系统，入库、库存、拣货、出库全流程数字化。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --ink: #1a1d29;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --line: #e5e7eb;
+      --font: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { margin: 0; font-weight: 600; }
+    p { margin: 0; }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 clamp(20px, 4vw, 60px);
+    }
+    .nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav__logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav__logo-icon {
+      width: 32px; height: 32px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 18px;
+    }
+    .nav__links { display: flex; gap: 32px; }
+    .nav__links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .nav__links a:hover { color: var(--primary); }
+    .nav__cta {
+      padding: 8px 20px;
+      background: var(--primary);
+      color: white !important;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background .2s;
+    }
+    .nav__cta:hover { background: var(--primary-dark); }
+
+    /* Hero */
+    .hero {
+      padding: 140px clamp(20px, 4vw, 60px) 100px;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #f7f8fa 100%);
+      text-align: center;
+    }
+    .hero__badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero__desc {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .hero__btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all .2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn--primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn--primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn--outline {
+      background: white;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    .btn--outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Hero demo */
+    .hero-demo {
+      max-width: 1000px;
+      margin: 60px auto 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(37, 99, 235, .15);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .hero-demo__bar {
+      padding: 12px 16px;
+      background: #f9fafb;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 8px;
+    }
+    .hero-demo__bar span {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: #e5e7eb;
+    }
+    .hero-demo__body {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+    }
+    .demo-sidebar {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .demo-sidebar a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+    .demo-sidebar a.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .demo-main h3 { font-size: 18px; margin-bottom: 16px; }
+    .demo-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .demo-stat {
+      padding: 16px;
+      background: #f9fafb;
+      border-radius: 8px;
+    }
+    .demo-stat__label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+    .demo-stat__value { font-size: 24px; font-weight: 700; }
+    .demo-stat__value.up { color: var(--success); }
+    .demo-table { width: 100%; font-size: 14px; }
+    .demo-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: #f9fafb;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .demo-table td {
+      padding: 10px 12px;
+      border-top: 1px solid var(--line);
+    }
+    .status-tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+    .status-tag.success { background: #dcfce7; color: #166534; }
+    .status-tag.warning { background: #fef3c7; color: #92400e; }
+    .status-tag.info { background: #dbeafe; color: #1e40af; }
+
+    /* Features */
+    section { padding: 100px clamp(20px, 4vw, 60px); }
+    .section__label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 20px;
+    }
+    .section__desc {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 60px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      padding: 32px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      transition: all .3s;
+    }
+    .feature-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, .1);
+      transform: translateY(-4px);
+    }
+    .feature-card__icon {
+      width: 48px; height: 48px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .feature-card h3 { font-size: 18px; margin-bottom: 10px; }
+    .feature-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+    /* Pricing */
+    .pricing { background: white; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .price-card {
+      padding: 40px 32px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .price-card--featured {
+      border-color: var(--primary);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, .15);
+      position: relative;
+    }
+    .price-card--featured::before {
+      content: "最受欢迎";
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 16px;
+      background: var(--primary);
+      color: white;
+      font-size: 12px;
+      border-radius: 999px;
+    }
+    .price-card h3 { font-size: 20px; margin-bottom: 8px; }
+    .price-card__desc { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .price-card__price { font-size: 48px; font-weight: 700; margin-bottom: 4px; }
+    .price-card__price span { font-size: 16px; color: var(--muted); font-weight: 400; }
+    .price-card__period { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+    .price-card ul { text-align: left; margin-bottom: 28px; }
+    .price-card li {
+      padding: 8px 0;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .price-card li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 700;
+    }
+    .price-card .btn { width: 100%; }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+    }
+    .cta h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 16px;
+    }
+    .cta p {
+      font-size: 18px;
+      opacity: .9;
+      margin-bottom: 32px;
+    }
+    .cta .btn--primary {
+      background: white;
+      color: var(--primary);
+    }
+    .cta .btn--primary:hover { background: #f0f9ff; }
+
+    /* Footer */
+    footer {
+      padding: 60px clamp(20px, 4vw, 60px) 30px;
+      background: #1a1d29;
+      color: #9ca3af;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+    .footer__brand h4 { color: white; font-size: 20px; margin-bottom: 12px; }
+    .footer__brand p { font-size: 14px; line-height: 1.7; }
+    .footer__col h5 {
+      color: white;
+      font-size: 14px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .footer__col a {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: color .2s;
+    }
+    .footer__col a:hover { color: white; }
+    .footer__bottom {
+      padding-top: 24px;
+      border-top: 1px solid #374151;
+      text-align: center;
+      font-size: 13px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .hero-demo__body { grid-template-columns: 1fr; }
+      .demo-sidebar { display: none; }
+      .demo-stats { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <div class="nav__logo">
+        <div class="nav__logo-icon">📦</div>
+        仓衡 WMS
+      </div>
+      <div class="nav__links">
+        <a href="#features">功能</a>
+        <a href="#pricing">价格</a>
+        <a href="#faq">常见问题</a>
+      </div>
+      <a href="#cta" class="nav__cta">免费试用</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero__badge">🚀 新用户免费试用 14 天</div>
+      <h1>让仓库管起来<span>更轻松</span></h1>
+      <p class="hero__desc">面向中小企业的仓储管理系统，入库、库存、拣货、出库全流程数字化。操作简单，上手快，一周内就能用起来。</p>
+      <div class="hero__btns">
+        <a href="#cta" class="btn btn--primary">免费开始使用</a>
+        <a href="#features" class="btn btn--outline">了解功能 →</a>
+      </div>
+      
+      <div class="hero-demo">
+        <div class="hero-demo__bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="hero-demo__body">
+          <div class="demo-sidebar">
+            <a href="#" class="active">📊 数据概览</a>
+            <a href="#">📥 入库管理</a>
+            <a href="#">📤 出库管理</a>
+            <a href="#">🔍 库存查询</a>
+            <a href="#">📋 盘点管理</a>
+            <a href="#">⚙️ 系统设置</a>
+          </div>
+          <div class="demo-main">
+            <h3>数据概览</h3>
+            <div class="demo-stats">
+              <div class="demo-stat">
+                <div class="demo-stat__label">今日入库</div>
+                <div class="demo-stat__value up">1,248</div>
+              </div>
+              <div class="demo-stat">
+                <div class="demo-stat__label">今日出库</div>
+                <div class="demo-stat__value">856</div>
+              </div>
+              <div class="demo-stat">
+                <div class="demo-stat__label">库存总量</div>
+                <div class="demo-stat__value">12,430</div>
+              </div>
+              <div class="demo-stat">
+                <div class="demo-stat__label">预警商品</div>
+                <div class="demo-stat__value" style="color: var(--warning)">6</div>
+              </div>
+            </div>
+            <table class="demo-table">
+              <thead>
+                <tr>
+                  <th>商品名称</th>
+                  <th>SKU</th>
+                  <th>库存</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>无线蓝牙耳机</td>
+                  <td>SKU-001</td>
+                  <td>1,248</td>
+                  <td><span class="status-tag success">正常</span></td>
+                </tr>
+                <tr>
+                  <td>手机支架</td>
+                  <td>SKU-023</td>
+                  <td>86</td>
+                  <td><span class="status-tag warning">库存预警</span></td>
+                </tr>
+                <tr>
+                  <td>USB-C 数据线</td>
+                  <td>SKU-045</td>
+                  <td>3,420</td>
+                  <td><span class="status-tag success">正常</span></td>
+                </tr>
+                <tr>
+                  <td>便携充电宝</td>
+                  <td>SKU-067</td>
+                  <td>12</td>
+                  <td><span class="status-tag info">补货中</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div style="text-align: center; max-width: 1200px; margin: 0 auto;">
+        <div class="section__label">核心功能</div>
+        <h2 class="section__title">仓库管理该有的功能，<br>我们都做好了。</h2>
+        <p class="section__desc" style="margin: 0 auto 60px;">从入库到出库，从盘点到报表，仓衡 WMS 覆盖了中小企业仓库管理的所有核心场景。</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">📥</div>
+          <h3>入库管理</h3>
+          <p>支持采购入库、退货入库、调拨入库。扫码录入，自动生成入库单，库存实时更新。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📤</div>
+          <h3>出库管理</h3>
+          <p>订单出库、调拨出库、盘点出库。波次拣货优化路线，拣货效率提升 40%。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔍</div>
+          <h3>库存查询</h3>
+          <p>多维度查询库存，支持按商品、批次、库位筛选。库存流水一目了然。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📋</div>
+          <h3>盘点管理</h3>
+          <p>支持全盘、抽盘、循环盘点。盘点差异自动生成调整单，审批后生效。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📊</div>
+          <h3>数据报表</h3>
+          <p>出入库报表、库存周转率、ABC 分析。用数据帮你优化库存策略。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔔</div>
+          <h3>智能预警</h3>
+          <p>库存不足、临期商品、呆滞物料自动提醒。再也不怕缺货或过期。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div style="text-align: center; max-width: 1000px; margin: 0 auto;">
+        <div class="section__label">价格方案</div>
+        <h2 class="section__title">选择适合你的方案</h2>
+        <p class="section__desc" style="margin: 0 auto 60px;">从初创团队到中型仓库，都能找到合适的版本。</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>入门版</h3>
+          <p class="price-card__desc">适合小仓库起步</p>
+          <div class="price-card__price">¥299<span>/月</span></div>
+          <p class="price-card__period">按年付更优惠</p>
+          <ul>
+            <li>3 个用户账号</li>
+            <li>1,000 个 SKU</li>
+            <li>基础出入库管理</li>
+            <li>库存查询</li>
+            <li>邮件支持</li>
+          </ul>
+          <button class="btn btn--outline">开始试用</button>
+        </div>
+        <div class="price-card price-card--featured">
+          <h3>专业版</h3>
+          <p class="price-card__desc">最受欢迎的选择</p>
+          <div class="price-card__price">¥599<span>/月</span></div>
+          <p class="price-card__period">按年付更优惠</p>
+          <ul>
+            <li>10 个用户账号</li>
+            <li>10,000 个 SKU</li>
+            <li>完整出入库管理</li>
+            <li>盘点管理</li>
+            <li>数据报表</li>
+            <li>API 对接</li>
+            <li>专属客服</li>
+          </ul>
+          <button class="btn btn--primary">免费试用</button>
+        </div>
+        <div class="price-card">
+          <h3>企业版</h3>
+          <p class="price-card__desc">定制化解决方案</p>
+          <div class="price-card__price" style="font-size: 32px;">联系我们</div>
+          <p class="price-card__period">按需报价</p>
+          <ul>
+            <li>无限用户账号</li>
+            <li>无限 SKU</li>
+            <li>全部功能</li>
+            <li>多仓库管理</li>
+            <li>定制开发</li>
+            <li>私有化部署</li>
+            <li>7×24 技术支持</li>
+          </ul>
+          <button class="btn btn--outline">联系销售</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="cta">
+      <h2>准备好让仓库更高效了吗？</h2>
+      <p>14 天免费试用，无需信用卡，随时可取消。</p>
+      <a href="#" class="btn btn--primary">立即免费试用 →</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>仓衡 WMS</h4>
+        <p>让仓库管起来更轻松。<br>面向中小企业的仓储管理系统。</p>
+      </div>
+      <div class="footer__col">
+        <h5>产品</h5>
+        <a href="#">功能介绍</a>
+        <a href="#">价格方案</a>
+        <a href="#">更新日志</a>
+      </div>
+      <div class="footer__col">
+        <h5>资源</h5>
+        <a href="#">帮助中心</a>
+        <a href="#">API 文档</a>
+        <a href="#">博客</a>
+      </div>
+      <div class="footer__col">
+        <h5>联系我们</h5>
+        <a href="#">销售咨询</a>
+        <a href="#">技术支持</a>
+        <a href="#">商务合作</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      © 2026 仓衡 WMS · 本站为网站设计案例，品牌和功能均为示例
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日读 · Leo</title>
+  <meta name="description" content="给自己做的信息流阅读器：每天自动整理关注社区的新帖，AI 过滤、只看精华、左滑不喜欢。">
+  <meta name="theme-color" content="#06082f">
+  <link rel="icon" type="image/png" href="../../img/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="topbar">
+    <a href="../../" class="topbar__name">
+      <span>Leo</span>
+      <span>独立开发者</span>
+    </a>
+    <nav class="topbar__nav">
+      <a href="../../">首页</a>
+      <a href="../" aria-current="page">作品</a>
+    </nav>
+    <nav class="topbar__nav">
+      <a href="../../about/">关于</a>
+      <a href="../../blog/">博客</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="topbar__avail">
+        <span class="status-dot"></span>
+        <span>接单中</span>
+      </span>
+      <span class="topbar__time" data-beijing-time>--:--</span>
+    </div>
+    <a href="#contact" class="topbar__lang">✉</a>
+  </header>
+
+  <div class="menu-btn-wrap is-visible">
+    <button class="menu-btn" aria-label="打开菜单">
+      <span class="menu-btn__lines"><span></span><span></span></span>
+    </button>
+  </div>
+  <div class="menu-overlay"></div>
+  <aside class="menu">
+    <div>
+      <div class="menu__label">导航</div>
+      <nav class="menu__links">
+        <a href="../../">首页</a>
+        <a href="../" aria-current="page">作品</a>
+        <a href="../../about/">关于</a>
+        <a href="../../blog/">博客</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+    <div class="menu__foot">
+      <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <section class="case-head">
+      <h1 class="page-title">日读</h1>
+      <dl class="case-meta">
+        <div>
+          <dt>类型</dt>
+          <dd>安卓 App + 后端</dd>
+        </div>
+        <div>
+          <dt>分工</dt>
+          <dd>独立开发</dd>
+        </div>
+        <div>
+          <dt>年份</dt>
+          <dd>2026</dd>
+        </div>
+        <div>
+          <dt>技术</dt>
+          <dd>Flutter · Node.js · AI 摘要</dd>
+        </div>
+      </dl>
+    </section>
+
+    <figure class="case-media">
+      <img src="../../img/work/daily-reader.webp" alt="日读 App 预览">
+    </figure>
+
+    <section class="case-body">
+      <h2 class="case-body__summary">给自己做的信息流阅读器：每天自动整理关注社区的新帖，AI 过滤、只看精华、左滑不喜欢。</h2>
+      <div class="case-body__text">
+        <p>信息过载是个老问题了——关注了一堆社区和博客，每天刷下来时间花了不少，真正有价值的内容没多少。于是做了这个"日读" App。</p>
+        <p>后端每天定时从 Hacker News、Reddit 几个子版块、V2EX、以及一些独立博客的 RSS 源抓取新内容。先用 AI 做一轮初筛，把广告、水文、重复内容过滤掉。</p>
+        <p>然后用另一个模型给剩下的内容打分，按"我可能感兴趣的程度"排序。分数高的标为"精华"，会出现在首页顶部。每篇内容还会生成一段两三句话的摘要，不用点进去就能知道大概讲了什么。</p>
+        <p>App 交互借鉴了 Tinder——右滑收藏，左滑"不喜欢"。不喜欢的内容会反馈给后端，用来调整推荐算法。用的时间越长，推荐越准。</p>
+        <p>还有个"每日简报"功能，每天早上 8 点推送一封邮件（或 App 通知），里面是昨天最值得看的 5 篇内容，每篇一段摘要。花 5 分钟就能了解昨天发生了什么。</p>
+      </div>
+    </section>
+
+    <div class="case-link">
+      <a href="#" class="pill">了解更多 ↗</a>
+    </div>
+
+    <a href="roastery/" class="case-next">
+      <div class="case-next__label">回到第一个作品</div>
+      <div class="case-next__title">焙序咖啡 →</div>
+    </a>
+  </main>
+
+  <div class="footer-curve"><div class="footer-curve__shape"></div></div>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer__head">
+      <h2 class="footer__title">
+        <span class="footer__title-row">
+          一起做点
+          <span class="footer__avatar"><img src="../../img/leo-avatar.jpg" alt="Leo 的头像"></span>
+        </span>
+        <span>东西吧</span>
+      </h2>
+    </div>
+    <div class="footer__line">
+      <div class="footer__cta">
+        <a href="mailto:shady.pgone@gmail.com" class="btn-round btn-round--accent">联系我</a>
+      </div>
+    </div>
+    <div class="footer__pills">
+      <a href="mailto:shady.pgone@gmail.com" class="pill pill--dark">shady.pgone@gmail.com</a>
+    </div>
+    <div class="footer__meta">
+      <div class="footer__meta-group">
+        <div><h3>版本</h3><span>v1.0</span></div>
+        <div><h3>北京时间</h3><span data-beijing-time>--:--</span></div>
+      </div>
+      <div class="footer__meta-group">
+        <div>
+          <h3>社交</h3>
+          <div class="footer__socials">
+            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

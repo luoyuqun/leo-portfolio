@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>台球延长线 · Leo</title>
+  <meta name="description" content="实时识别屏幕画面，在悬浮窗上把瞄准线延长到库边，还能画出翻袋线。">
+  <meta name="theme-color" content="#06082f">
+  <link rel="icon" type="image/png" href="../../img/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="topbar">
+    <a href="../../" class="topbar__name">
+      <span>Leo</span>
+      <span>独立开发者</span>
+    </a>
+    <nav class="topbar__nav">
+      <a href="../../">首页</a>
+      <a href="../" aria-current="page">作品</a>
+    </nav>
+    <nav class="topbar__nav">
+      <a href="../../about/">关于</a>
+      <a href="../../blog/">博客</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="topbar__avail">
+        <span class="status-dot"></span>
+        <span>接单中</span>
+      </span>
+      <span class="topbar__time" data-beijing-time>--:--</span>
+    </div>
+    <a href="#contact" class="topbar__lang">✉</a>
+  </header>
+
+  <div class="menu-btn-wrap is-visible">
+    <button class="menu-btn" aria-label="打开菜单">
+      <span class="menu-btn__lines"><span></span><span></span></span>
+    </button>
+  </div>
+  <div class="menu-overlay"></div>
+  <aside class="menu">
+    <div>
+      <div class="menu__label">导航</div>
+      <nav class="menu__links">
+        <a href="../../">首页</a>
+        <a href="../" aria-current="page">作品</a>
+        <a href="../../about/">关于</a>
+        <a href="../../blog/">博客</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+    <div class="menu__foot">
+      <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <section class="case-head">
+      <h1 class="page-title">台球延长线</h1>
+      <dl class="case-meta">
+        <div>
+          <dt>类型</dt>
+          <dd>安卓 App · 图像识别</dd>
+        </div>
+        <div>
+          <dt>分工</dt>
+          <dd>独立开发</dd>
+        </div>
+        <div>
+          <dt>年份</dt>
+          <dd>2026</dd>
+        </div>
+        <div>
+          <dt>技术</dt>
+          <dd>Kotlin · OpenCV · 悬浮窗</dd>
+        </div>
+      </dl>
+    </section>
+
+    <figure class="case-media">
+      <img src="../../img/work/cue-line.webp" alt="台球延长线 App 预览">
+    </figure>
+
+    <section class="case-body">
+      <h2 class="case-body__summary">实时识别屏幕画面，在悬浮窗上把瞄准线延长到库边，还能画出翻袋线。</h2>
+      <div class="case-body__text">
+        <p>这是我给自己做的一个"练球辅助工具"。平时打台球手游的时候，总是瞄不准，想有个辅助线，但又不想用外挂被封号。于是自己做了一个。</p>
+        <p>原理很简单：用 Android 的 MediaProjection API 截取屏幕画面，用 OpenCV 识别桌面上的球和球杆方向，然后计算出击球路线，画在一个悬浮窗上。因为是画在悬浮窗里而不是修改游戏数据，所以不会被检测成外挂。</p>
+        <p>核心功能有三个：一是基础瞄准线，从母球沿着球杆方向一直延长到碰到库边或其他球；二是翻袋线，可以计算球碰到库边后的反弹路径；三是进球线，显示目标球进袋的瞄准点。</p>
+        <p>做这个 App 最大的挑战是实时性——每帧都要做图像识别，还要在 60fps 的游戏里不拖慢速度。最后通过 ROI 裁剪、多线程处理和一系列优化，把单帧处理时间压到了 8ms 以内。</p>
+        <p>目前只在小众圈子里分享，没上架 Google Play。毕竟算不算"作弊"这个事，每个人的标准不一样。</p>
+      </div>
+    </section>
+
+    <div class="case-link">
+      <a href="#" class="pill">了解更多 ↗</a>
+    </div>
+
+    <a href="daily-reader/" class="case-next">
+      <div class="case-next__label">下一个作品</div>
+      <div class="case-next__title">日读 →</div>
+    </a>
+  </main>
+
+  <div class="footer-curve"><div class="footer-curve__shape"></div></div>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer__head">
+      <h2 class="footer__title">
+        <span class="footer__title-row">
+          一起做点
+          <span class="footer__avatar"><img src="../../img/leo-avatar.jpg" alt="Leo 的头像"></span>
+        </span>
+        <span>东西吧</span>
+      </h2>
+    </div>
+    <div class="footer__line">
+      <div class="footer__cta">
+        <a href="mailto:shady.pgone@gmail.com" class="btn-round btn-round--accent">联系我</a>
+      </div>
+    </div>
+    <div class="footer__pills">
+      <a href="mailto:shady.pgone@gmail.com" class="pill pill--dark">shady.pgone@gmail.com</a>
+    </div>
+    <div class="footer__meta">
+      <div class="footer__meta-group">
+        <div><h3>版本</h3><span>v1.0</span></div>
+        <div><h3>北京时间</h3><span data-beijing-time>--:--</span></div>
+      </div>
+      <div class="footer__meta-group">
+        <div>
+          <h3>社交</h3>
+          <div class="footer__socials">
+            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

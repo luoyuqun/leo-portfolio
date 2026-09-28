@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日读 - 每天精选优质内容</title>
+  <meta name="description" content="AI 帮你筛选优质内容，每天 5 分钟了解昨天发生了什么。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --ink: #1c1917;
+      --muted: #78716c;
+      --accent: #f97316;
+      --accent-soft: #fff7ed;
+      --line: #e7e5e4;
+      --font: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif SC", Georgia, serif;
+      --sans: "Inter", "PingFang SC", sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { margin: 0; font-weight: 600; }
+    p { margin: 0; }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 249, .95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 clamp(20px, 4vw, 60px);
+    }
+    .nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .nav__logo-icon { font-size: 24px; }
+    .nav__links { display: flex; gap: 28px; }
+    .nav__links a {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: var(--sans);
+      transition: color .2s;
+    }
+    .nav__links a:hover { color: var(--ink); }
+
+    /* Hero */
+    .hero {
+      padding: 80px 20px 60px;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero__date {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      letter-spacing: .05em;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -.02em;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero__desc {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+    .hero__form {
+      display: flex;
+      gap: 12px;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .hero__form input {
+      flex: 1;
+      padding: 14px 20px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 15px;
+      font-family: var(--sans);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .hero__form input:focus { border-color: var(--accent); }
+    .hero__form button {
+      padding: 14px 28px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--sans);
+      cursor: pointer;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .hero__form button:hover { background: #ea580c; }
+    .hero__note {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: var(--sans);
+    }
+
+    /* Today's issue preview */
+    .issue-preview {
+      max-width: 700px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.06);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .issue-preview__head {
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .issue-preview__title {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .issue-preview__date {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .issue-item {
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .issue-item:last-child { border-bottom: none; }
+    .issue-item__tag {
+      display: inline-block;
+      padding: 2px 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: var(--sans);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .issue-item h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .issue-item p {
+      font-size: 15px;
+      color: var(--muted);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+    .issue-item__meta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #a8a29e;
+      font-family: var(--sans);
+      display: flex;
+      gap: 16px;
+    }
+
+    /* Features */
+    section { padding: 80px clamp(20px, 4vw, 60px); }
+    .section__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+    .section__label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      font-family: var(--sans);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section__title {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 16px;
+    }
+    .section__desc { font-size: 17px; color: var(--muted); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      transition: all .3s;
+    }
+    .feature-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(249, 115, 22, .1);
+    }
+    .feature-card__icon {
+      width: 48px; height: 48px;
+      background: var(--accent-soft);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .feature-card h3 { font-size: 19px; margin-bottom: 10px; }
+    .feature-card p { font-size: 15px; color: var(--muted); font-family: var(--sans); }
+
+    /* How it works */
+    .how-section { background: white; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .step {
+      text-align: center;
+    }
+    .step__num {
+      font-family: var(--font);
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: .2;
+    }
+    .step h3 { font-size: 20px; margin-bottom: 10px; }
+    .step p { font-size: 15px; color: var(--muted); font-family: var(--sans); }
+
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .testimonial {
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .testimonial__stars {
+      color: #fbbf24;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    .testimonial p {
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      color: #44403c;
+    }
+    .testimonial__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+    }
+    .testimonial__avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+    .testimonial__name { font-size: 14px; font-weight: 600; }
+    .testimonial__role { font-size: 12px; color: var(--muted); }
+
+    /* Pricing */
+    .pricing-section { background: white; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .price-card {
+      padding: 36px 28px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .price-card--featured {
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px rgba(249, 115, 22, .15);
+      position: relative;
+    }
+    .price-card--featured::before {
+      content: "推荐";
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 16px;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      font-size: 12px;
+      font-family: var(--sans);
+      font-weight: 600;
+    }
+    .price-card h3 { font-size: 20px; margin-bottom: 8px; }
+    .price-card__desc {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: var(--sans);
+      margin-bottom: 20px;
+    }
+    .price-card__price {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .price-card__price span {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .price-card ul {
+      text-align: left;
+      margin: 24px 0;
+      font-family: var(--sans);
+      font-size: 14px;
+    }
+    .price-card li {
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .price-card li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .price-card button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--sans);
+      cursor: pointer;
+      transition: all .2s;
+      border: 1px solid var(--line);
+      background: white;
+    }
+    .price-card--featured button {
+      background: var(--accent);
+      color: white;
+      border: none;
+    }
+    .price-card button:hover { opacity: .9; transform: translateY(-1px); }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: linear-gradient(180deg, var(--accent-soft), white);
+    }
+    .cta h2 {
+      font-size: clamp(32px, 4vw, 44px);
+      margin-bottom: 16px;
+    }
+    .cta p {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px clamp(20px, 4vw, 60px) 30px;
+      background: #1c1917;
+      color: #a8a29e;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto 30px;
+    }
+    .footer__brand h4 {
+      font-size: 22px;
+      color: white;
+      margin-bottom: 12px;
+    }
+    .footer__brand p { font-size: 14px; line-height: 1.7; font-family: var(--sans); }
+    .footer__col h5 {
+      color: white;
+      font-size: 15px;
+      margin-bottom: 16px;
+      font-family: var(--sans);
+    }
+    .footer__col a {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 10px;
+      font-family: var(--sans);
+      transition: color .2s;
+    }
+    .footer__col a:hover { color: white; }
+    .footer__bottom {
+      padding-top: 24px;
+      border-top: 1px solid #292524;
+      text-align: center;
+      font-size: 13px;
+      max-width: 1000px;
+      margin: 0 auto;
+      font-family: var(--sans);
+    }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .steps { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .hero__form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <div class="nav__logo">
+        <span class="nav__logo-icon">📖</span>
+        日读
+      </div>
+      <div class="nav__links">
+        <a href="#features">功能</a>
+        <a href="#pricing">价格</a>
+        <a href="#">登录</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero__date">2026 年 9 月 28 日 · 星期日</div>
+      <h1>每天 5 分钟，<br><span>读懂昨天</span></h1>
+      <p class="hero__desc">AI 帮你筛选全网优质内容，去重、摘要、排序。每天早上 8 点，一封简报搞定。</p>
+      <form class="hero__form" onsubmit="event.preventDefault(); alert('订阅成功！明天早上 8 点见。');">
+        <input type="email" placeholder="输入你的邮箱" required>
+        <button type="submit">免费订阅</button>
+      </form>
+      <p class="hero__note">已有 12,000+ 人订阅 · 随时取消</p>
+
+      <div class="issue-preview">
+        <div class="issue-preview__head">
+          <span class="issue-preview__title">📖 今日简报预览</span>
+          <span class="issue-preview__date">约 4 分钟阅读</span>
+        </div>
+        <div class="issue-item">
+          <span class="issue-item__tag">🔥 头条</span>
+          <h3>AI 编程工具大更新：Cursor 推出 Agent 模式</h3>
+          <p>Cursor 最新版本推出 Agent 模式，可以自动完成多步骤编程任务，从理解需求到写代码、测试一条龙...</p>
+          <div class="issue-item__meta">
+            <span>技术</span>
+            <span>⭐ 精华</span>
+          </div>
+        </div>
+        <div class="issue-item">
+          <span class="issue-item__tag">💡 产品</span>
+          <h3>独立开发者怎么做 SEO：从 0 到日均 1000 访问</h3>
+          <p>不靠买量、不搞黑帽。分享 3 个出海站从选词到收录的完整路径...</p>
+          <div class="issue-item__meta">
+            <span>运营</span>
+            <span>👍 推荐</span>
+          </div>
+        </div>
+        <div class="issue-item">
+          <span class="issue-item__tag">🤔 思考</span>
+          <h3>产品经理转独立开发，我后悔了吗？</h3>
+          <p>转型一年半，收入、心态、生活方式的变化。以及，到底值不值得转...</p>
+          <div class="issue-item__meta">
+            <span>职业</span>
+            <span>💬 热议</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="section__header">
+        <div class="section__label">核心功能</div>
+        <h2 class="section__title">为什么选日读？</h2>
+        <p class="section__desc">信息爆炸时代，帮你把时间花在真正有价值的内容上。</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">🤖</div>
+          <h3>AI 智能筛选</h3>
+          <p>多维度评分，自动过滤水文、广告、重复内容。只给你看真正值得读的。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📝</div>
+          <h3>AI 内容摘要</h3>
+          <p>每篇内容生成 2-3 句话摘要，快速判断要不要深读。节省 80% 时间。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">👆</div>
+          <h3>左滑不喜欢</h3>
+          <p>不感兴趣的内容左滑跳过，AI 学习你的偏好，推荐越来越准。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📊</div>
+          <h3>多源聚合</h3>
+          <p>Hacker News、Reddit、V2EX、独立博客... 一处看完所有关注的内容。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📧</div>
+          <h3>每日邮件</h3>
+          <p>每天早上 8 点准时送达，一杯咖啡的时间了解昨天发生了什么。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔒</div>
+          <h3>隐私优先</h3>
+          <p>你的阅读数据只属于你。不追踪、不卖数据、没有第三方广告。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section">
+      <div class="section__header">
+        <div class="section__label">工作原理</div>
+        <h2 class="section__title">每天的简报是怎么来的</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">01</div>
+          <h3>全网抓取</h3>
+          <p>每天凌晨从 30+ 个内容源抓取新内容，覆盖技术、产品、设计等领域。</p>
+        </div>
+        <div class="step">
+          <div class="step__num">02</div>
+          <h3>AI 筛选</h3>
+          <p>AI 去重、打分、分类，从数百篇内容中精选出最值得读的 5-8 篇。</p>
+        </div>
+        <div class="step">
+          <div class="step__num">03</div>
+          <h3>准时送达</h3>
+          <p>每天早上 8 点，一封精美的邮件简报送到你的邮箱，开启高效的一天。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section__header">
+        <div class="section__label">用户评价</div>
+        <h2 class="section__title">他们都在用日读</h2>
+      </div>
+      <div class="testimonials">
+        <div class="testimonial">
+          <div class="testimonial__stars">★★★★★</div>
+          <p>"以前每天刷各种社区要花 1 个多小时，现在 5 分钟就够了。省下来的时间能多读两本书。"</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">👨‍💻</div>
+            <div>
+              <div class="testimonial__name">张小明</div>
+              <div class="testimonial__role">全栈工程师</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial__stars">★★★★★</div>
+          <p>"AI 摘要太好用了！扫一眼就知道哪篇值得深读，哪篇跳过就行。推荐也越来越准。"</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">👩‍🎨</div>
+            <div>
+              <div class="testimonial__name">李设计</div>
+              <div class="testimonial__role">产品设计师</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial__stars">★★★★★</div>
+          <p>"每天早上到公司，先泡杯咖啡看日读，开启高效的一天。已经是生活的一部分了。"</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">👨‍💼</div>
+            <div>
+              <div class="testimonial__name">王产品</div>
+              <div class="testimonial__role">产品经理</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+      <div class="section__header">
+        <div class="section__label">价格方案</div>
+        <h2 class="section__title">选择适合你的方案</h2>
+        <p class="section__desc">免费版足够用，专业版更强大。</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>免费版</h3>
+          <p class="price-card__desc">先试试看</p>
+          <div class="price-card__price">¥0<span>/月</span></div>
+          <ul>
+            <li>每日 5 篇精选内容</li>
+            <li>AI 摘要</li>
+            <li>邮件推送</li>
+            <li>3 个内容源</li>
+          </ul>
+          <button>免费开始</button>
+        </div>
+        <div class="price-card price-card--featured">
+          <h3>专业版</h3>
+          <p class="price-card__desc">深度用户首选</p>
+          <div class="price-card__price">¥29<span>/月</span></div>
+          <ul>
+            <li>每日 15 篇精选内容</li>
+            <li>AI 深度摘要</li>
+            <li>邮件 + App 推送</li>
+            <li>全部 30+ 内容源</li>
+            <li>个性化推荐</li>
+            <li>分类标签筛选</li>
+            <li>无广告</li>
+          </ul>
+          <button>立即订阅</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>每天 5 分钟，<br>遇见更好的自己</h2>
+      <p>加入 12,000+ 已经在用日读的人。</p>
+      <form class="hero__form" style="margin: 0 auto;" onsubmit="event.preventDefault(); alert('订阅成功！');">
+        <input type="email" placeholder="输入你的邮箱" required>
+        <button type="submit">免费订阅</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>📖 日读</h4>
+        <p>每天 5 分钟，读懂昨天。<br>AI 精选优质内容，让信息过载成为过去。</p>
+      </div>
+      <div class="footer__col">
+        <h5>产品</h5>
+        <a href="#">功能介绍</a>
+        <a href="#">价格方案</a>
+        <a href="#">App 下载</a>
+      </div>
+      <div class="footer__col">
+        <h5>资源</h5>
+        <a href="#">帮助中心</a>
+        <a href="#">博客</a>
+        <a href="#">API</a>
+      </div>
+      <div class="footer__col">
+        <h5>关于</h5>
+        <a href="#">关于我们</a>
+        <a href="#">隐私政策</a>
+        <a href="#">联系我们</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      © 2026 日读 · 本站为网站设计案例，产品为演示用途
+    </div>
+  </footer>
+</body>
+</html>
