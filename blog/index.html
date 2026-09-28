@@ -1,47 +1,51 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>博客 · Leo</title>
-  <meta name="description" content="做产品、做网站过程里的记录。只写自己真做过的事。">
-  <meta name="theme-color" content="#06082f">
+  <title>博客 · Leo 独立开发者</title>
+  <meta name="description" content="做产品、做网站、做独立开发过程中的记录和思考。只写自己真做过的事。">
+  <meta name="theme-color" content="#0a0a0f">
   <link rel="icon" type="image/png" href="../img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
 
-  <!-- Top Navigation -->
-  <header class="topbar">
-    <div class="topbar__inner">
-      <a href="../" class="topbar__brand" aria-label="Leo 独立开发者">
-        <span class="topbar__logo">L</span>
-        <span class="topbar__name">
-          <span class="topbar__name-main">Leo</span>
-          <span class="topbar__name-sub">独立开发者</span>
-        </span>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="主导航">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__brand" aria-label="Leo 独立开发者">
+        <span class="navbar__logo">L</span>
+        <span class="navbar__name">Leo<span class="navbar__name-dot">.dev</span></span>
       </a>
-      <nav class="topbar__nav" aria-label="主导航">
-        <a href="../"><span>首页</span></a>
-        <a href="../work/"><span>作品</span></a>
-        <a href="../about/"><span>关于</span></a>
-        <a href="./" aria-current="page"><span>博客</span></a>
-      </nav>
-      <div class="topbar__actions">
-        <div class="topbar__status">
+      
+      <div class="navbar__nav">
+        <a href="../">首页</a>
+        <a href="../work/">作品</a>
+        <a href="../about/">关于</a>
+        <a href="./" aria-current="page">博客</a>
+      </div>
+      
+      <div class="navbar__actions">
+        <div class="navbar__status">
           <span class="status-dot" aria-hidden="true"></span>
-          <span class="topbar__status-text">接单中</span>
+          <span>接单中</span>
         </div>
-        <a href="../#contact" class="topbar__cta" aria-label="联系我">
-          <span>联系</span>
+        <button class="theme-toggle" aria-label="切换主题">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="#contact" class="btn btn--primary">
+          <span>联系我</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Mobile Menu Button -->
   <div class="menu-btn-wrap is-visible">
     <button class="menu-btn" aria-label="打开菜单" aria-expanded="false">
       <span class="menu-btn__lines" aria-hidden="true">
@@ -51,10 +55,8 @@
     </button>
   </div>
 
-  <!-- Mobile Menu Overlay -->
   <div class="menu-overlay" aria-hidden="true"></div>
 
-  <!-- Mobile Menu Panel -->
   <aside class="menu" aria-label="菜单">
     <div>
       <div class="menu__label">导航</div>
@@ -68,112 +70,164 @@
     </div>
     <div class="menu__foot">
       <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+      <span>基于 GMT+8 · <span data-beijing-time>--:--</span></span>
     </div>
   </aside>
 
   <main id="main">
-    <section class="page-head">
-      <h1 class="page-title">
-        <span>博客</span>
-      </h1>
-      <p class="page-lead">做产品、做网站过程里的记录。只写自己真做过的事。</p>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <div class="page-hero__eyebrow">博客</div>
+        <h1 class="page-hero__title">
+          <span>写写</span>
+          <span><span class="page-hero__title-accent">做过的</span> 事</span>
+        </h1>
+        <p class="page-hero__lead">
+          做产品、做网站、做独立开发过程中的记录和思考。
+          只写自己真做过的事，不写空话。
+        </p>
+      </div>
     </section>
 
-    <section class="blog-list">
-      <a href="#" class="blog-item">
-        <span class="blog-item__date">2026.09.25</span>
-        <div>
-          <h2 class="blog-item__title">网站做好了，国内到底能不能打开？</h2>
-          <p class="blog-item__excerpt">自己能打开不算数。我绕开代理实测了几种常见的托管方式，结果和想的不太一样。</p>
+    <!-- Blog List -->
+    <section class="section" style="padding-top: 0;">
+      <div class="blog-list__inner">
+        <div class="blog-list">
+          <a href="#" class="blog-item">
+            <span class="blog-item__date">2026.09.25</span>
+            <div>
+              <h2 class="blog-item__title">网站做好了，国内到底能不能打开？</h2>
+              <p class="blog-item__excerpt">自己能打开不算数。我绕开代理实测了几种常见的托管方式，结果和想的不太一样。</p>
+            </div>
+            <span class="blog-item__read-time">约 1 分钟</span>
+          </a>
+          
+          <a href="#" class="blog-item">
+            <span class="blog-item__date">2026.09.25</span>
+            <div>
+              <h2 class="blog-item__title">一天做完 3 个网站案例：我的 AI 建站流程</h2>
+              <p class="blog-item__excerpt">从挑素材到双语上线，3 个完整单页一天做完。记录流程，也记录 4 个差点踩进去的坑。</p>
+            </div>
+            <span class="blog-item__read-time">约 2 分钟</span>
+          </a>
+          
+          <a href="#" class="blog-item">
+            <span class="blog-item__date">2026.09.20</span>
+            <div>
+              <h2 class="blog-item__title">独立开发者怎么做 SEO：从 0 到日均 1000 访问</h2>
+              <p class="blog-item__excerpt">不靠买量、不搞黑帽。分享我做的 3 个出海站从选词到收录的完整路径。</p>
+            </div>
+            <span class="blog-item__read-time">约 3 分钟</span>
+          </a>
+          
+          <a href="#" class="blog-item">
+            <span class="blog-item__date">2026.09.15</span>
+            <div>
+              <h2 class="blog-item__title">产品经理转独立开发，我后悔了吗？</h2>
+              <p class="blog-item__excerpt">转型一年半，收入、心态、生活方式的变化。以及，到底值不值得转。</p>
+            </div>
+            <span class="blog-item__read-time">约 4 分钟</span>
+          </a>
+          
+          <a href="#" class="blog-item">
+            <span class="blog-item__date">2026.09.10</span>
+            <div>
+              <h2 class="blog-item__title">用 AI 写代码一年，我的工具链演进</h2>
+              <p class="blog-item__excerpt">从 Copilot 到 Cursor 到各种 Agent，哪些真的能提效，哪些只是玩具。</p>
+            </div>
+            <span class="blog-item__read-time">约 2 分钟</span>
+          </a>
+          
+          <a href="#" class="blog-item">
+            <span class="blog-item__date">2026.09.05</span>
+            <div>
+              <h2 class="blog-item__title">我是怎么用 AI 做设计的</h2>
+              <p class="blog-item__excerpt">不是专业设计师也能做出好看的网站。分享我用 AI 辅助设计的工作流。</p>
+            </div>
+            <span class="blog-item__read-time">约 3 分钟</span>
+          </a>
         </div>
-        <span class="blog-item__read-time">约 1 分钟</span>
-      </a>
-      <a href="#" class="blog-item">
-        <span class="blog-item__date">2026.09.25</span>
-        <div>
-          <h2 class="blog-item__title">一天做完 3 个网站案例：我的 AI 建站流程</h2>
-          <p class="blog-item__excerpt">从挑素材到双语上线，3 个完整单页一天做完。记录流程，也记录 4 个差点踩进去的坑。</p>
-        </div>
-        <span class="blog-item__read-time">约 2 分钟</span>
-      </a>
-      <a href="#" class="blog-item">
-        <span class="blog-item__date">2026.09.20</span>
-        <div>
-          <h2 class="blog-item__title">独立开发者怎么做 SEO：从 0 到日均 1000 访问</h2>
-          <p class="blog-item__excerpt">不靠买量、不搞黑帽。分享我做的 3 个出海站从选词到收录的完整路径。</p>
-        </div>
-        <span class="blog-item__read-time">约 3 分钟</span>
-      </a>
-      <a href="#" class="blog-item">
-        <span class="blog-item__date">2026.09.15</span>
-        <div>
-          <h2 class="blog-item__title">产品经理转独立开发，我后悔了吗？</h2>
-          <p class="blog-item__excerpt">转型一年半，收入、心态、生活方式的变化。以及，到底值不值得转。</p>
-        </div>
-        <span class="blog-item__read-time">约 4 分钟</span>
-      </a>
-      <a href="#" class="blog-item">
-        <span class="blog-item__date">2026.09.10</span>
-        <div>
-          <h2 class="blog-item__title">用 AI 写代码一年，我的工具链演进</h2>
-          <p class="blog-item__excerpt">从 Copilot 到 Cursor 到各种 Agent，哪些真的能提效，哪些只是玩具。</p>
-        </div>
-        <span class="blog-item__read-time">约 2 分钟</span>
-      </a>
+      </div>
     </section>
   </main>
 
-  <!-- Footer Curve -->
-  <div class="footer-curve" aria-hidden="true">
-    <div class="footer-curve__shape"></div>
-  </div>
-
-  <!-- Site Footer -->
+  <!-- Footer -->
   <footer class="site-footer" id="contact">
-    <div class="footer__head">
-      <h2 class="footer__title">
-        <span class="footer__title-row">
-          一起做点
-          <span class="footer__avatar">
-            <img src="../img/leo-avatar.jpg" alt="Leo 的头像">
-          </span>
-        </span>
-        <span>东西吧</span>
-      </h2>
-    </div>
-
-    <div class="footer__line">
-      <div class="footer__cta">
-        <a href="mailto:shady.pgone@gmail.com" class="btn-round btn-round--accent">联系我</a>
-      </div>
-    </div>
-
-    <div class="footer__pills">
-      <a href="mailto:shady.pgone@gmail.com" class="pill pill--dark">shady.pgone@gmail.com</a>
-    </div>
-
-    <div class="footer__meta">
-      <div class="footer__meta-group">
-        <div>
-          <h3>版本</h3>
-          <span>v1.0</span>
-        </div>
-        <div>
-          <h3>北京时间</h3>
-          <span data-beijing-time>--:--</span>
-        </div>
-      </div>
-      <div class="footer__meta-group">
-        <div>
-          <h3>社交</h3>
-          <div class="footer__socials">
-            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand-col">
+          <div class="footer__brand">
+            <span class="footer__logo">L</span>
+            <span class="footer__brand-name">Leo.dev</span>
           </div>
+          <p class="footer__tagline">
+            独立开发者，帮你把想法做成真正能上线的产品。
+            从设计到开发一个人负责，沟通不绕弯。
+          </p>
+          <a href="mailto:shady.pgone@gmail.com" class="btn btn--primary footer__cta-btn">
+            <span>开始合作</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">导航</h3>
+          <div class="footer__links">
+            <a href="../">首页</a>
+            <a href="../work/">作品</a>
+            <a href="../about/">关于</a>
+            <a href="./">博客</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">服务</h3>
+          <div class="footer__links">
+            <a href="../work/">网站开发</a>
+            <a href="../work/">小程序 & App</a>
+            <a href="../work/">出海 SEO 站</a>
+            <a href="../about/">合作流程</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">联系方式</h3>
+          <div class="footer__contact">
+            <a href="mailto:shady.pgone@gmail.com" class="footer__email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              shady.pgone@gmail.com
+            </a>
+            <div class="footer__socials">
+              <a href="https://github.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="mailto:shady.pgone@gmail.com" class="footer__social-link" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div class="footer__copyright">
+          &copy; 2026 Leo.dev · 独立开发者作品集
+        </div>
+        <div class="footer__meta-links">
+          <span>北京时间 <span data-beijing-time>--:--</span></span>
+          <span>v2.0</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
   <script src="../js/main.js"></script>
 </body>

@@ -1,45 +1,50 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>作品 · Leo</title>
-  <meta name="description" content="网站、出海站和 App。每一个都能打开、能用。">
-  <meta name="theme-color" content="#06082f">
+  <title>作品 · Leo 独立开发者</title>
+  <meta name="description" content="网站、小程序、App 和出海站。每一个项目都能打开、能用、好看。">
+  <meta name="theme-color" content="#0a0a0f">
   <link rel="icon" type="image/png" href="../img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
 
-  <!-- Top Navigation -->
-  <header class="topbar">
-    <div class="topbar__inner">
-      <a href="../" class="topbar__brand" aria-label="Leo 独立开发者">
-        <span class="topbar__logo">L</span>
-        <span class="topbar__name">
-          <span class="topbar__name-main">Leo</span>
-          <span class="topbar__name-sub">独立开发者</span>
-        </span>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="主导航">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__brand" aria-label="Leo 独立开发者">
+        <span class="navbar__logo">L</span>
+        <span class="navbar__name">Leo<span class="navbar__name-dot">.dev</span></span>
       </a>
-      <nav class="topbar__nav" aria-label="主导航">
-        <a href="../"><span>首页</span></a>
-        <a href="./" aria-current="page"><span>作品</span></a>
-        <a href="../about/"><span>关于</span></a>
-        <a href="../blog/"><span>博客</span></a>
-      </nav>
-      <div class="topbar__actions">
-        <div class="topbar__status">
+      
+      <div class="navbar__nav">
+        <a href="../">首页</a>
+        <a href="./" aria-current="page">作品</a>
+        <a href="../about/">关于</a>
+        <a href="../blog/">博客</a>
+      </div>
+      
+      <div class="navbar__actions">
+        <div class="navbar__status">
           <span class="status-dot" aria-hidden="true"></span>
-          <span class="topbar__status-text">接单中</span>
+          <span>接单中</span>
         </div>
-        <a href="../#contact" class="topbar__cta" aria-label="联系我">
-          <span>联系</span>
+        <button class="theme-toggle" aria-label="切换主题">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="#contact" class="btn btn--primary">
+          <span>联系我</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
-  </header>
+  </nav>
 
   <!-- Mobile Menu Button -->
   <div class="menu-btn-wrap is-visible">
@@ -51,10 +56,8 @@
     </button>
   </div>
 
-  <!-- Mobile Menu Overlay -->
   <div class="menu-overlay" aria-hidden="true"></div>
 
-  <!-- Mobile Menu Panel -->
   <aside class="menu" aria-label="菜单">
     <div>
       <div class="menu__label">导航</div>
@@ -68,134 +71,340 @@
     </div>
     <div class="menu__foot">
       <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+      <span>基于 GMT+8 · <span data-beijing-time>--:--</span></span>
     </div>
   </aside>
 
   <main id="main">
-    <section class="page-head reveal">
-      <h1 class="page-title">
-        <span>做过的</span>
-        <span>东西</span>
-      </h1>
-      <p class="page-lead">网站、出海站和 App。每一个都能打开、能用。</p>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <div class="page-hero__eyebrow">作品集</div>
+        <h1 class="page-hero__title">
+          <span>做过的</span>
+          <span><span class="page-hero__title-accent">8个</span> 精选项目</span>
+        </h1>
+        <p class="page-hero__lead">
+          从品牌官网到 SaaS 落地页，从微信小程序到出海 SEO 站。
+          每一个项目都从设计到上线独立完成，确保质量和细节。
+        </p>
+      </div>
     </section>
 
-    <section class="work reveal">
-      <div class="work__label">全部作品</div>
-      <div class="work-list work-table reveal-stagger">
-        <div class="work-table__head" role="row">
-          <span>项目</span>
-          <span>类型</span>
-          <span>年份</span>
-          <span></span>
+    <!-- Work Grid Section -->
+    <section class="section" style="padding-top: 0;">
+      <div class="work-section__header">
+        <div class="filter-tabs reveal">
+          <button class="filter-tab is-active" data-filter="all">全部</button>
+          <button class="filter-tab" data-filter="website">网站</button>
+          <button class="filter-tab" data-filter="app">App</button>
+          <button class="filter-tab" data-filter="design">设计</button>
+          <button class="filter-tab" data-filter="seo">SEO 站</button>
         </div>
-        <a href="roastery/" class="work-row">
-          <h3 class="work-row__name">焙序咖啡</h3>
-          <span class="work-row__cell">咖啡品牌官网</span>
-          <span class="work-row__cell">2026</span>
-          <span class="work-row__cell">→</span>
+        <div class="reveal" style="font-size: var(--text-sm); color: var(--text-tertiary);">
+          共 8 个项目
+        </div>
+      </div>
+      
+      <div class="work-grid reveal-stagger">
+        <a href="roastery/" class="work-card" data-category="website">
+          <div class="work-card__media">
+            <img src="../img/work/card-roastery.webp" alt="焙序咖啡品牌官网" loading="lazy">
+            <div class="work-card__overlay"></div>
+            <div class="work-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__tags">
+              <span class="work-card__tag">品牌官网</span>
+              <span class="work-card__tag">创意动效</span>
+            </div>
+            <h3 class="work-card__title">焙序咖啡</h3>
+            <p class="work-card__desc">一家自家烘焙咖啡馆的官网，首屏是一条实时画出来的烘焙曲线。</p>
+            <div class="work-card__footer">
+              <span class="work-card__year">2026</span>
+              <span class="work-card__view">
+                查看详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
         </a>
-        <a href="warehouse/" class="work-row">
-          <h3 class="work-row__name">仓衡 WMS</h3>
-          <span class="work-row__cell">B2B 软件官网</span>
-          <span class="work-row__cell">2026</span>
-          <span class="work-row__cell">→</span>
+        
+        <a href="warehouse/" class="work-card" data-category="website">
+          <div class="work-card__media">
+            <img src="../img/work/card-warehouse.webp" alt="仓衡 WMS 软件官网" loading="lazy">
+            <div class="work-card__overlay"></div>
+            <div class="work-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__tags">
+              <span class="work-card__tag">B2B 官网</span>
+              <span class="work-card__tag">SaaS</span>
+            </div>
+            <h3 class="work-card__title">仓衡 WMS</h3>
+            <p class="work-card__desc">仓储管理软件的官网，用代码实时绘制仓库画面，拣货员在货架间走动。</p>
+            <div class="work-card__footer">
+              <span class="work-card__year">2026</span>
+              <span class="work-card__view">
+                查看详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
         </a>
-        <a href="plety/" class="work-row">
-          <h3 class="work-row__name">Plety</h3>
-          <span class="work-row__cell">AI SaaS 落地页</span>
-          <span class="work-row__cell">2026</span>
-          <span class="work-row__cell">→</span>
+        
+        <a href="plety/" class="work-card" data-category="website">
+          <div class="work-card__media">
+            <img src="../img/work/card-plety.webp" alt="Plety AI SaaS 落地页" loading="lazy">
+            <div class="work-card__overlay"></div>
+            <div class="work-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__tags">
+              <span class="work-card__tag">AI SaaS</span>
+              <span class="work-card__tag">落地页</span>
+            </div>
+            <h3 class="work-card__title">Plety</h3>
+            <p class="work-card__desc">AI 产品的完整落地页，流光背景、滚动渐入、可以真的打字的产品界面。</p>
+            <div class="work-card__footer">
+              <span class="work-card__year">2026</span>
+              <span class="work-card__view">
+                查看详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
         </a>
-        <a href="stories-in-light/" class="work-row">
-          <h3 class="work-row__name">stories in light</h3>
-          <span class="work-row__cell">摄影师作品集</span>
-          <span class="work-row__cell">2026</span>
-          <span class="work-row__cell">→</span>
+        
+        <a href="stories-in-light/" class="work-card" data-category="design">
+          <div class="work-card__media">
+            <img src="../img/work/card-stories-in-light.webp" alt="摄影师作品集" loading="lazy">
+            <div class="work-card__overlay"></div>
+            <div class="work-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__tags">
+              <span class="work-card__tag">作品集</span>
+              <span class="work-card__tag">创意交互</span>
+            </div>
+            <h3 class="work-card__title">stories in light</h3>
+            <p class="work-card__desc">鼠标就是手电筒，光斑滑过人像，照到的地方露出金色面具和暗纹墙纸。</p>
+            <div class="work-card__footer">
+              <span class="work-card__year">2026</span>
+              <span class="work-card__view">
+                查看详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
         </a>
-        <a href="airlines/" class="work-row">
-          <h3 class="work-row__name">Airlines</h3>
-          <span class="work-row__cell">旅行社官网</span>
-          <span class="work-row__cell">2026</span>
-          <span class="work-row__cell">→</span>
+        
+        <a href="airlines/" class="work-card" data-category="website">
+          <div class="work-card__media">
+            <img src="../img/work/card-airlines.webp" alt="旅行社官网" loading="lazy">
+            <div class="work-card__overlay"></div>
+            <div class="work-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__tags">
+              <span class="work-card__tag">品牌官网</span>
+              <span class="work-card__tag">旅游</span>
+            </div>
+            <h3 class="work-card__title">Airlines 旅行社</h3>
+            <p class="work-card__desc">首屏镜头穿过舷窗，照片都框在舷窗里，结尾的晚霞随滚动放大到整屏。</p>
+            <div class="work-card__footer">
+              <span class="work-card__year">2026</span>
+              <span class="work-card__view">
+                查看详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
         </a>
-        <a href="game-wikis/" class="work-row">
-          <h3 class="work-row__name">出海游戏 Wiki 站</h3>
-          <span class="work-row__cell">出海 SEO 站 ×3</span>
-          <span class="work-row__cell">2026</span>
-          <span class="work-row__cell">→</span>
+        
+        <a href="game-wikis/" class="work-card" data-category="seo">
+          <div class="work-card__media">
+            <img src="../img/work/card-game-wikis.webp" alt="出海游戏 Wiki 站" loading="lazy">
+            <div class="work-card__overlay"></div>
+            <div class="work-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__tags">
+              <span class="work-card__tag">出海 SEO</span>
+              <span class="work-card__tag">内容站</span>
+            </div>
+            <h3 class="work-card__title">出海游戏 Wiki 站</h3>
+            <p class="work-card__desc">面向海外玩家的新游戏攻略站，从选词、建站到上线、收录都是自己做的。</p>
+            <div class="work-card__footer">
+              <span class="work-card__year">2026</span>
+              <span class="work-card__view">
+                查看详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
         </a>
-        <a href="cue-line/" class="work-row">
-          <h3 class="work-row__name">台球延长线</h3>
-          <span class="work-row__cell">安卓 App · 图像识别</span>
-          <span class="work-row__cell">2026</span>
-          <span class="work-row__cell">→</span>
+        
+        <a href="cue-line/" class="work-card" data-category="app">
+          <div class="work-card__media">
+            <img src="../img/work/card-cue-line.webp" alt="台球延长线 App" loading="lazy">
+            <div class="work-card__overlay"></div>
+            <div class="work-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__tags">
+              <span class="work-card__tag">安卓 App</span>
+              <span class="work-card__tag">图像识别</span>
+            </div>
+            <h3 class="work-card__title">台球延长线</h3>
+            <p class="work-card__desc">用手机摄像头实时识别台球桌，画出击球延长线，帮助新手瞄准。</p>
+            <div class="work-card__footer">
+              <span class="work-card__year">2026</span>
+              <span class="work-card__view">
+                查看详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
         </a>
-        <a href="daily-reader/" class="work-row">
-          <h3 class="work-row__name">日读</h3>
-          <span class="work-row__cell">安卓 App + 后端</span>
-          <span class="work-row__cell">2026</span>
-          <span class="work-row__cell">→</span>
+        
+        <a href="daily-reader/" class="work-card" data-category="app">
+          <div class="work-card__media">
+            <img src="../img/work/card-daily-reader.webp" alt="日读 App" loading="lazy">
+            <div class="work-card__overlay"></div>
+            <div class="work-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__tags">
+              <span class="work-card__tag">安卓 App</span>
+              <span class="work-card__tag">阅读工具</span>
+            </div>
+            <h3 class="work-card__title">日读</h3>
+            <p class="work-card__desc">每天推荐一篇深度文章的阅读 App，极简设计，专注内容。后端自己搭。</p>
+            <div class="work-card__footer">
+              <span class="work-card__year">2026</span>
+              <span class="work-card__view">
+                查看详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section work-section">
+      <div class="section__header reveal" style="text-align: center; max-width: 600px; margin: 0 auto 40px;">
+        <h2 class="section__title" style="margin: 0 auto;">有想法？来聊聊</h2>
+        <p style="color: var(--text-secondary); margin-top: 16px; font-size: var(--text-lg);">
+          不管是官网、小程序还是 App，告诉我你的想法，我来帮你实现。
+        </p>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="mailto:shady.pgone@gmail.com" class="btn btn--primary btn--lg">
+          <span>发邮件给我</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="../about/" class="btn btn--secondary btn--lg">
+          <span>了解合作流程</span>
         </a>
       </div>
     </section>
   </main>
 
-  <!-- Footer Curve -->
-  <div class="footer-curve" aria-hidden="true">
-    <div class="footer-curve__shape"></div>
-  </div>
-
-  <!-- Site Footer -->
+  <!-- Footer -->
   <footer class="site-footer" id="contact">
-    <div class="footer__head">
-      <h2 class="footer__title">
-        <span class="footer__title-row">
-          一起做点
-          <span class="footer__avatar">
-            <img src="../img/leo-avatar.jpg" alt="Leo 的头像">
-          </span>
-        </span>
-        <span>东西吧</span>
-      </h2>
-    </div>
-
-    <div class="footer__line">
-      <div class="footer__cta">
-        <a href="mailto:shady.pgone@gmail.com" class="btn-round btn-round--accent">联系我</a>
-      </div>
-    </div>
-
-    <div class="footer__pills">
-      <a href="mailto:shady.pgone@gmail.com" class="pill pill--dark">shady.pgone@gmail.com</a>
-    </div>
-
-    <div class="footer__signature">
-      <img src="../img/leo-signature.svg" alt="Leo 的签名">
-    </div>
-
-    <div class="footer__meta">
-      <div class="footer__meta-group">
-        <div>
-          <h3>版本</h3>
-          <span>v1.0</span>
-        </div>
-        <div>
-          <h3>北京时间</h3>
-          <span data-beijing-time>--:--</span>
-        </div>
-      </div>
-      <div class="footer__meta-group">
-        <div>
-          <h3>社交</h3>
-          <div class="footer__socials">
-            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand-col">
+          <div class="footer__brand">
+            <span class="footer__logo">L</span>
+            <span class="footer__brand-name">Leo.dev</span>
           </div>
+          <p class="footer__tagline">
+            独立开发者，帮你把想法做成真正能上线的产品。
+            从设计到开发一个人负责，沟通不绕弯。
+          </p>
+          <a href="mailto:shady.pgone@gmail.com" class="btn btn--primary footer__cta-btn">
+            <span>开始合作</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">导航</h3>
+          <div class="footer__links">
+            <a href="../">首页</a>
+            <a href="./">作品</a>
+            <a href="../about/">关于</a>
+            <a href="../blog/">博客</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">服务</h3>
+          <div class="footer__links">
+            <a href="./">网站开发</a>
+            <a href="./">小程序 & App</a>
+            <a href="./">出海 SEO 站</a>
+            <a href="../about/">合作流程</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">联系方式</h3>
+          <div class="footer__contact">
+            <a href="mailto:shady.pgone@gmail.com" class="footer__email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              shady.pgone@gmail.com
+            </a>
+            <div class="footer__socials">
+              <a href="https://github.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="mailto:shady.pgone@gmail.com" class="footer__social-link" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div class="footer__copyright">
+          &copy; 2026 Leo.dev · 独立开发者作品集
+        </div>
+        <div class="footer__meta-links">
+          <span>北京时间 <span data-beijing-time>--:--</span></span>
+          <span>v2.0</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
   <script src="../js/main.js"></script>
 </body>

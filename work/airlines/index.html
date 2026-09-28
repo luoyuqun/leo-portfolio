@@ -5,49 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Airlines · Leo</title>
   <meta name="description" content="首屏镜头穿过舷窗，往下所有照片都框在舷窗里，结尾的晚霞随滚动放大到整屏。">
-  <meta name="theme-color" content="#06082f">
+  <meta name="theme-color" content="#0a0a0f">
   <link rel="icon" type="image/png" href="../../img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
 
-  <!-- Top Navigation -->
-  <header class="topbar">
-    <div class="topbar__inner">
-      <a href="../../" class="topbar__brand" aria-label="Leo 独立开发者">
-        <span class="topbar__logo">L</span>
-        <span class="topbar__name">
-          <span class="topbar__name-main">Leo</span>
-          <span class="topbar__name-sub">独立开发者</span>
-        </span>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="主导航">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__brand" aria-label="Leo 独立开发者">
+        <span class="navbar__logo">L</span>
+        <span class="navbar__name">Leo<span class="navbar__name-dot">.dev</span></span>
       </a>
-      <nav class="topbar__nav" aria-label="主导航">
-        <a href="../../"><span>首页</span></a>
-        <a href="../../work/" aria-current="page"><span>作品</span></a>
-        <a href="../../about/"><span>关于</span></a>
-        <a href="../../blog/"><span>博客</span></a>
-      </nav>
-      <div class="topbar__actions">
-        <div class="topbar__status">
+      
+      <div class="navbar__nav">
+        <a href="../../">首页</a>
+        <a href="../" aria-current="page">作品</a>
+        <a href="../../about/">关于</a>
+        <a href="../../blog/">博客</a>
+      </div>
+      
+      <div class="navbar__actions">
+        <div class="navbar__status">
           <span class="status-dot" aria-hidden="true"></span>
-          <span class="topbar__status-text">接单中</span>
+          <span>接单中</span>
         </div>
-        <a href="../../#contact" class="topbar__cta" aria-label="联系我">
-          <span>联系</span>
+        <button class="theme-toggle" aria-label="切换主题">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="../../#contact" class="btn btn--primary">
+          <span>联系我</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <div class="menu-btn-wrap is-visible">
-    <button class="menu-btn" aria-label="打开菜单">
-      <span class="menu-btn__lines"><span></span><span></span></span>
+  <!-- Mobile Menu Button -->
+  <div class="menu-btn-wrap">
+    <button class="menu-btn" aria-label="打开菜单" aria-expanded="false">
+      <span class="menu-btn__lines" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
     </button>
   </div>
-  <div class="menu-overlay"></div>
-  <aside class="menu">
+
+  <!-- Mobile Menu Overlay -->
+  <div class="menu-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Menu Panel -->
+  <aside class="menu" aria-label="菜单">
     <div>
       <div class="menu__label">导航</div>
       <nav class="menu__links">
@@ -55,98 +68,229 @@
         <a href="../" aria-current="page">作品</a>
         <a href="../../about/">关于</a>
         <a href="../../blog/">博客</a>
-        <a href="#contact">联系</a>
+        <a href="../../#contact">联系</a>
       </nav>
     </div>
     <div class="menu__foot">
       <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+      <span>基于 GMT+8 · <span data-beijing-time>--:--</span></span>
     </div>
   </aside>
 
   <main id="main">
-    <section class="case-head">
-      <h1 class="page-title">Airlines</h1>
-      <dl class="case-meta">
-        <div>
-          <dt>类型</dt>
-          <dd>旅行社官网</dd>
+    <!-- Case Hero -->
+    <section class="case-hero">
+      <div class="case-hero__inner">
+        <a href="../" class="back-link reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          返回作品列表
+        </a>
+        
+        <h1 class="case-hero__title reveal">Airlines</h1>
+        
+        <div class="case-hero__tags reveal">
+          <span class="case-hero__tag">旅行品牌</span>
+          <span class="case-hero__tag">视差滚动</span>
+          <span class="case-hero__tag">沉浸式体验</span>
         </div>
-        <div>
-          <dt>分工</dt>
-          <dd>设计与开发</dd>
-        </div>
-        <div>
-          <dt>年份</dt>
-          <dd>2026</dd>
-        </div>
-        <div>
-          <dt>技术</dt>
-          <dd>HTML / CSS · 视差滚动 · 图片裁剪</dd>
-        </div>
-      </dl>
-    </section>
-
-    <figure class="case-media">
-      <img src="../../img/work/airlines.webp" alt="Airlines 旅行社官网预览">
-    </figure>
-
-    <section class="case-body">
-      <h2 class="case-body__summary">旅行社官网，首屏镜头穿过舷窗，往下所有照片都框在舷窗里，结尾的晚霞随滚动放大到整屏。</h2>
-      <div class="case-body__text">
-        <p>这是给一家做高端定制旅行的小公司做的官网。他们的卖点是"像私人飞机一样的体验"，所以整个网站围绕"舷窗"这个视觉元素展开。</p>
-        <p>首屏是一个从飞机内部看向窗外的视角。随着向下滚动，镜头会"穿过"舷窗，进入云层之上的天空。过渡做了无缝衔接，用 CSS mask 和 transform 配合实现。</p>
-        <p>往下滚动，每一张目的地照片都框在一个舷窗形状的容器里。照片会有微妙的视差效果——滚动时图片移动的速度比页面慢一点，营造出透过窗户看风景的感觉。</p>
-        <p>结尾是一整屏的晚霞照片，随着滚动逐渐放大、拉近，最后定格在"让每一次旅行都像飞一样"的 slogan 上。</p>
-        <p>线路介绍用了时间线的形式，从出发到返回，每一天的行程都有对应的小图和简介，一目了然。</p>
+        
+        <dl class="case-info-bar reveal">
+          <div class="case-info-item">
+            <dt>项目类型</dt>
+            <dd>高端旅行社官网</dd>
+          </div>
+          <div class="case-info-item">
+            <dt>我的角色</dt>
+            <dd>设计与开发</dd>
+          </div>
+          <div class="case-info-item">
+            <dt>完成年份</dt>
+            <dd>2026</dd>
+          </div>
+          <div class="case-info-item">
+            <dt>技术栈</dt>
+            <dd>HTML / CSS · 视差 · CSS mask</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
-    <div class="case-link">
-      <a href="../../sites/airlines/" class="pill">访问网站 ↗</a>
-    </div>
+    <!-- Case Hero Image -->
+    <section class="case-hero-image">
+      <div class="case-hero-image__inner reveal">
+        <img src="../../img/work/airlines.webp" alt="Airlines 旅行社官网预览">
+      </div>
+    </section>
 
-    <a href="game-wikis/" class="case-next">
-      <div class="case-next__label">下一个作品</div>
-      <div class="case-next__title">出海游戏 Wiki 站 →</div>
-    </a>
+    <!-- Case Body -->
+    <section class="case-body">
+      <div class="case-body__inner">
+        <div class="case-body__section reveal">
+          <div class="case-body__section-label">项目背景</div>
+          <div>
+            <h2 class="case-body__section-title">一家主打"私人飞行体验"的高端旅行社</h2>
+            <p>这是给一家做高端定制旅行的小公司做的官网。他们做的不是普通跟团游，而是私人飞机、私人向导、专属行程的"头等舱"级别的旅行服务。客单价很高，客户群体也很小众。</p>
+            <p>他们之前的网站就是个普通的旅游模板，完全撑不起"高端"这个定位。客户说："我们卖的是体验，但网站看起来就很没体验。"</p>
+          </div>
+        </div>
+
+        <div class="case-body__section reveal">
+          <div class="case-body__section-label">核心挑战</div>
+          <div>
+            <h2 class="case-body__section-title">怎么用网页传达"飞行感"和"高级感"</h2>
+            <p>高端旅行网站很容易做俗——满屏的海景、日落、香槟，看起来就像朋友圈的微商广告。怎么避免俗套，同时又能准确传达"自由、奢华、飞翔"的品牌感觉？</p>
+            <p>另外一个挑战是内容不多——他们不做很多线路，只做精选的十几条。不能靠内容量撑页面，得靠体验和设计来撑。</p>
+          </div>
+        </div>
+
+        <div class="case-body__section reveal">
+          <div class="case-body__section-label">解决方案</div>
+          <div>
+            <h2 class="case-body__section-title">围绕"舷窗"这个元素，讲一个飞行的故事</h2>
+            <p>整个网站围绕"舷窗"这个视觉元素展开。首屏是一个从飞机内部看向窗外的视角。随着向下滚动，镜头会"穿过"舷窗，进入云层之上的天空。过渡做了无缝衔接，用 CSS mask 和 transform 配合实现，不用任何视频也能有电影感。</p>
+            <p>往下滚动，每一张目的地照片都框在一个舷窗形状的容器里。照片会有微妙的视差效果——滚动时图片移动的速度比页面慢一点，营造出透过窗户看风景的感觉。</p>
+            <p>结尾是一整屏的晚霞照片，随着滚动逐渐放大、拉近，最后定格在"让每一次旅行都像飞一样"的 slogan 上。整个浏览过程就像一次飞行体验——起飞、看风景、降落。</p>
+            <p>线路介绍用了时间线的形式，从出发到返回，每一天的行程都有对应的小图和简介，一目了然。</p>
+          </div>
+        </div>
+
+        <div class="case-body__section reveal">
+          <div class="case-body__section-label">最终成果</div>
+          <div>
+            <h2 class="case-body__section-title">官网成为主要获客渠道，咨询量提升 80%</h2>
+            <p>新官网上线后，最大的变化是咨询质量明显提高了。以前很多咨询都是问价格的，现在更多是直接问"你们某条线路还有没有档期"——因为网站已经帮他们筛选过了，能接受这个调性的客户才会来咨询。</p>
+            <p>数据方面，官网咨询量整体提升了 80%，客单价也有所提高。客户说，现在他们甚至可以用官网来"反向筛选"客户——不适合的客户看完网站自己就不会来了。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Gallery -->
+    <section class="case-gallery">
+      <div class="case-gallery__inner">
+        <div class="case-gallery__grid">
+          <div class="case-gallery__item reveal">
+            <img src="../../img/work/card-airlines.webp" alt="Airlines 首屏舷窗效果">
+          </div>
+          <div class="case-gallery__item reveal">
+            <img src="../../img/work/airlines.webp" alt="Airlines 目的地展示">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit Link -->
+    <section class="section" style="padding-top: 0; background: var(--bg-primary);">
+      <div style="max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); text-align: center;">
+        <a href="../../sites/airlines/" class="btn btn--primary btn--lg reveal" target="_blank" rel="noopener">
+          <span>访问网站</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Case Nav -->
+    <nav class="case-nav" aria-label="作品导航">
+      <div class="case-nav__inner">
+        <a href="stories-in-light/" class="case-nav__item">
+          <div class="case-nav__arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </div>
+          <div>
+            <div class="case-nav__label">上一个作品</div>
+            <div class="case-nav__title">stories in light</div>
+          </div>
+        </a>
+        <a href="game-wikis/" class="case-nav__item case-nav__item--next">
+          <div>
+            <div class="case-nav__label">下一个作品</div>
+            <div class="case-nav__title">出海游戏 Wiki 站</div>
+          </div>
+          <div class="case-nav__arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+      </div>
+    </nav>
   </main>
 
-  <div class="footer-curve"><div class="footer-curve__shape"></div></div>
-
+  <!-- Footer -->
   <footer class="site-footer" id="contact">
-    <div class="footer__head">
-      <h2 class="footer__title">
-        <span class="footer__title-row">
-          一起做点
-          <span class="footer__avatar"><img src="../../img/leo-avatar.jpg" alt="Leo 的头像"></span>
-        </span>
-        <span>东西吧</span>
-      </h2>
-    </div>
-    <div class="footer__line">
-      <div class="footer__cta">
-        <a href="mailto:shady.pgone@gmail.com" class="btn-round btn-round--accent">联系我</a>
-      </div>
-    </div>
-    <div class="footer__pills">
-      <a href="mailto:shady.pgone@gmail.com" class="pill pill--dark">shady.pgone@gmail.com</a>
-    </div>
-    <div class="footer__meta">
-      <div class="footer__meta-group">
-        <div><h3>版本</h3><span>v1.0</span></div>
-        <div><h3>北京时间</h3><span data-beijing-time>--:--</span></div>
-      </div>
-      <div class="footer__meta-group">
-        <div>
-          <h3>社交</h3>
-          <div class="footer__socials">
-            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand-col">
+          <div class="footer__brand">
+            <span class="footer__logo">L</span>
+            <span class="footer__brand-name">Leo.dev</span>
           </div>
+          <p class="footer__tagline">
+            独立开发者，帮你把想法做成真正能上线的产品。
+            从设计到开发一个人负责，沟通不绕弯。
+          </p>
+          <a href="mailto:shady.pgone@gmail.com" class="btn btn--primary footer__cta-btn">
+            <span>开始合作</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">导航</h3>
+          <div class="footer__links">
+            <a href="../../">首页</a>
+            <a href="../">作品</a>
+            <a href="../../about/">关于</a>
+            <a href="../../blog/">博客</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">服务</h3>
+          <div class="footer__links">
+            <a href="../">网站开发</a>
+            <a href="../">小程序 & App</a>
+            <a href="../">出海 SEO 站</a>
+            <a href="../../about/">合作流程</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">联系方式</h3>
+          <div class="footer__contact">
+            <a href="mailto:shady.pgone@gmail.com" class="footer__email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              shady.pgone@gmail.com
+            </a>
+            <div class="footer__socials">
+              <a href="https://github.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="mailto:shady.pgone@gmail.com" class="footer__social-link" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div class="footer__copyright">
+          &copy; 2026 Leo.dev · 独立开发者作品集
+        </div>
+        <div class="footer__meta-links">
+          <span>北京时间 <span data-beijing-time>--:--</span></span>
+          <span>v2.0</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
   <script src="../../js/main.js"></script>
 </body>

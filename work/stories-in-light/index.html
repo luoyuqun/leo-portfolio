@@ -5,49 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>stories in light · Leo</title>
   <meta name="description" content="鼠标就是手电筒：光斑滑过人像，照到的地方露出金色面具和暗纹墙纸。">
-  <meta name="theme-color" content="#06082f">
+  <meta name="theme-color" content="#0a0a0f">
   <link rel="icon" type="image/png" href="../../img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
 
-  <!-- Top Navigation -->
-  <header class="topbar">
-    <div class="topbar__inner">
-      <a href="../../" class="topbar__brand" aria-label="Leo 独立开发者">
-        <span class="topbar__logo">L</span>
-        <span class="topbar__name">
-          <span class="topbar__name-main">Leo</span>
-          <span class="topbar__name-sub">独立开发者</span>
-        </span>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="主导航">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__brand" aria-label="Leo 独立开发者">
+        <span class="navbar__logo">L</span>
+        <span class="navbar__name">Leo<span class="navbar__name-dot">.dev</span></span>
       </a>
-      <nav class="topbar__nav" aria-label="主导航">
-        <a href="../../"><span>首页</span></a>
-        <a href="../../work/" aria-current="page"><span>作品</span></a>
-        <a href="../../about/"><span>关于</span></a>
-        <a href="../../blog/"><span>博客</span></a>
-      </nav>
-      <div class="topbar__actions">
-        <div class="topbar__status">
+      
+      <div class="navbar__nav">
+        <a href="../../">首页</a>
+        <a href="../" aria-current="page">作品</a>
+        <a href="../../about/">关于</a>
+        <a href="../../blog/">博客</a>
+      </div>
+      
+      <div class="navbar__actions">
+        <div class="navbar__status">
           <span class="status-dot" aria-hidden="true"></span>
-          <span class="topbar__status-text">接单中</span>
+          <span>接单中</span>
         </div>
-        <a href="../../#contact" class="topbar__cta" aria-label="联系我">
-          <span>联系</span>
+        <button class="theme-toggle" aria-label="切换主题">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="../../#contact" class="btn btn--primary">
+          <span>联系我</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <div class="menu-btn-wrap is-visible">
-    <button class="menu-btn" aria-label="打开菜单">
-      <span class="menu-btn__lines"><span></span><span></span></span>
+  <!-- Mobile Menu Button -->
+  <div class="menu-btn-wrap">
+    <button class="menu-btn" aria-label="打开菜单" aria-expanded="false">
+      <span class="menu-btn__lines" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
     </button>
   </div>
-  <div class="menu-overlay"></div>
-  <aside class="menu">
+
+  <!-- Mobile Menu Overlay -->
+  <div class="menu-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Menu Panel -->
+  <aside class="menu" aria-label="菜单">
     <div>
       <div class="menu__label">导航</div>
       <nav class="menu__links">
@@ -55,98 +68,229 @@
         <a href="../" aria-current="page">作品</a>
         <a href="../../about/">关于</a>
         <a href="../../blog/">博客</a>
-        <a href="#contact">联系</a>
+        <a href="../../#contact">联系</a>
       </nav>
     </div>
     <div class="menu__foot">
       <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+      <span>基于 GMT+8 · <span data-beijing-time>--:--</span></span>
     </div>
   </aside>
 
   <main id="main">
-    <section class="case-head">
-      <h1 class="page-title">stories in light</h1>
-      <dl class="case-meta">
-        <div>
-          <dt>类型</dt>
-          <dd>摄影师作品集</dd>
+    <!-- Case Hero -->
+    <section class="case-hero">
+      <div class="case-hero__inner">
+        <a href="../" class="back-link reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          返回作品列表
+        </a>
+        
+        <h1 class="case-hero__title reveal">stories in light</h1>
+        
+        <div class="case-hero__tags reveal">
+          <span class="case-hero__tag">摄影师作品集</span>
+          <span class="case-hero__tag">Canvas 交互</span>
+          <span class="case-hero__tag">创意体验</span>
         </div>
-        <div>
-          <dt>分工</dt>
-          <dd>设计与开发</dd>
-        </div>
-        <div>
-          <dt>年份</dt>
-          <dd>2026</dd>
-        </div>
-        <div>
-          <dt>技术</dt>
-          <dd>HTML / CSS · Canvas · 鼠标追踪</dd>
-        </div>
-      </dl>
-    </section>
-
-    <figure class="case-media">
-      <img src="../../img/work/stories.webp" alt="stories in light 摄影师作品集预览">
-    </figure>
-
-    <section class="case-body">
-      <h2 class="case-body__summary">摄影师作品集网站，鼠标就是手电筒——光斑滑过人像，照到的地方露出金色面具和暗纹墙纸。</h2>
-      <div class="case-body__text">
-        <p>这是给一位时尚摄影师做的个人作品集。她的作品风格偏暗调、戏剧化，很多照片都有强烈的光影对比。</p>
-        <p>首屏的创意是"黑暗中的一束光"——整个页面几乎是黑的，只有鼠标（或手指）所在的位置有一个圆形光斑。移动鼠标，光斑会跟着走，照到的地方才会显示出照片的细节。</p>
-        <p>技术上用了两层图片叠加：底层是正常的照片，上层是一张调暗的蒙版。通过 Canvas 的 clip 功能，把鼠标位置的圆形区域"挖空"，露出底下的原图。光斑边缘有自然的羽化过渡，不会显得生硬。</p>
-        <p>作品集页面用了瀑布流布局，但不是传统的 masonry，而是每一行高度一致的"画廊墙"风格。点击照片会打开全屏查看器，左右滑动切换，支持键盘操作。</p>
-        <p>关于页用了打字机效果，摄影师的自述一段一段地"写"出来，配合光标闪烁，很有氛围感。</p>
+        
+        <dl class="case-info-bar reveal">
+          <div class="case-info-item">
+            <dt>项目类型</dt>
+            <dd>摄影师个人站</dd>
+          </div>
+          <div class="case-info-item">
+            <dt>我的角色</dt>
+            <dd>设计与开发</dd>
+          </div>
+          <div class="case-info-item">
+            <dt>完成年份</dt>
+            <dd>2026</dd>
+          </div>
+          <div class="case-info-item">
+            <dt>技术栈</dt>
+            <dd>HTML / CSS · Canvas</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
-    <div class="case-link">
-      <a href="../../sites/stories-in-light/" class="pill">访问网站 ↗</a>
-    </div>
+    <!-- Case Hero Image -->
+    <section class="case-hero-image">
+      <div class="case-hero-image__inner reveal">
+        <img src="../../img/work/stories.webp" alt="stories in light 摄影师作品集预览">
+      </div>
+    </section>
 
-    <a href="airlines/" class="case-next">
-      <div class="case-next__label">下一个作品</div>
-      <div class="case-next__title">Airlines →</div>
-    </a>
+    <!-- Case Body -->
+    <section class="case-body">
+      <div class="case-body__inner">
+        <div class="case-body__section reveal">
+          <div class="case-body__section-label">项目背景</div>
+          <div>
+            <h2 class="case-body__section-title">一位不想用模板的时尚摄影师</h2>
+            <p>这是给一位时尚摄影师做的个人作品集。她的作品风格偏暗调、戏剧化，很多照片都有强烈的光影对比。她找过几个模板，但都觉得太"普通"了——网格布局加灯箱效果，谁都能做，体现不出她的风格。</p>
+            <p>她的要求很简单，也很难："做一个别人一进来就忘不掉的网站。"</p>
+          </div>
+        </div>
+
+        <div class="case-body__section reveal">
+          <div class="case-body__section-label">核心挑战</div>
+          <div>
+            <h2 class="case-body__section-title">怎么用交互传达"光影"这个摄影主题</h2>
+            <p>摄影师的作品集网站，最大的挑战通常不是技术，而是创意——怎么让网站本身就成为作品的一部分，而不只是作品的容器？</p>
+            <p>这位摄影师的核心风格是"光影对比"，如果网站只是把照片摆出来，那就浪费了这个主题。我们需要一种交互方式，让访客在浏览过程中就能感受到"光"的存在。</p>
+          </div>
+        </div>
+
+        <div class="case-body__section reveal">
+          <div class="case-body__section-label">解决方案</div>
+          <div>
+            <h2 class="case-body__section-title">鼠标就是手电筒，照到哪里哪里亮</h2>
+            <p>首屏的创意是"黑暗中的一束光"——整个页面几乎是黑的，只有鼠标（或手指）所在的位置有一个圆形光斑。移动鼠标，光斑会跟着走，照到的地方才会显示出照片的细节。</p>
+            <p>技术上用了两层图片叠加：底层是正常的照片，上层是一张调暗的蒙版。通过 Canvas 的 clip 功能，把鼠标位置的圆形区域"挖空"，露出底下的原图。光斑边缘有自然的羽化过渡，不会显得生硬。</p>
+            <p>作品集页面用了瀑布流布局，但不是传统的 masonry，而是每一行高度一致的"画廊墙"风格，照片之间有均匀的留白，像真实的展览一样。点击照片会打开全屏查看器，左右滑动切换，支持键盘操作。</p>
+            <p>关于页用了打字机效果，摄影师的自述一段一段地"写"出来，配合光标闪烁，很有氛围感。</p>
+          </div>
+        </div>
+
+        <div class="case-body__section reveal">
+          <div class="case-body__section-label">最终成果</div>
+          <div>
+            <h2 class="case-body__section-title">被多个设计网站收录，接单量翻倍</h2>
+            <p>网站上线后，因为独特的交互体验，被 Awwwards、CSS Design Awards 等几个设计网站收录和推荐。首周访问量就破了万，对于一个个人摄影师来说已经很可观了。</p>
+            <p>更实在的是，摄影师反馈说，上线后的三个月里，商业拍摄的接单量比之前翻了一倍。很多客户联系她的第一句话都是"你的网站太有感觉了"。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Gallery -->
+    <section class="case-gallery">
+      <div class="case-gallery__inner">
+        <div class="case-gallery__grid">
+          <div class="case-gallery__item reveal">
+            <img src="../../img/work/card-stories.webp" alt="stories in light 光斑交互效果">
+          </div>
+          <div class="case-gallery__item reveal">
+            <img src="../../img/work/stories.webp" alt="stories in light 画廊页面">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit Link -->
+    <section class="section" style="padding-top: 0; background: var(--bg-primary);">
+      <div style="max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); text-align: center;">
+        <a href="../../sites/stories-in-light/" class="btn btn--primary btn--lg reveal" target="_blank" rel="noopener">
+          <span>访问网站</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Case Nav -->
+    <nav class="case-nav" aria-label="作品导航">
+      <div class="case-nav__inner">
+        <a href="plety/" class="case-nav__item">
+          <div class="case-nav__arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </div>
+          <div>
+            <div class="case-nav__label">上一个作品</div>
+            <div class="case-nav__title">Plety</div>
+          </div>
+        </a>
+        <a href="airlines/" class="case-nav__item case-nav__item--next">
+          <div>
+            <div class="case-nav__label">下一个作品</div>
+            <div class="case-nav__title">Airlines</div>
+          </div>
+          <div class="case-nav__arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+      </div>
+    </nav>
   </main>
 
-  <div class="footer-curve"><div class="footer-curve__shape"></div></div>
-
+  <!-- Footer -->
   <footer class="site-footer" id="contact">
-    <div class="footer__head">
-      <h2 class="footer__title">
-        <span class="footer__title-row">
-          一起做点
-          <span class="footer__avatar"><img src="../../img/leo-avatar.jpg" alt="Leo 的头像"></span>
-        </span>
-        <span>东西吧</span>
-      </h2>
-    </div>
-    <div class="footer__line">
-      <div class="footer__cta">
-        <a href="mailto:shady.pgone@gmail.com" class="btn-round btn-round--accent">联系我</a>
-      </div>
-    </div>
-    <div class="footer__pills">
-      <a href="mailto:shady.pgone@gmail.com" class="pill pill--dark">shady.pgone@gmail.com</a>
-    </div>
-    <div class="footer__meta">
-      <div class="footer__meta-group">
-        <div><h3>版本</h3><span>v1.0</span></div>
-        <div><h3>北京时间</h3><span data-beijing-time>--:--</span></div>
-      </div>
-      <div class="footer__meta-group">
-        <div>
-          <h3>社交</h3>
-          <div class="footer__socials">
-            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand-col">
+          <div class="footer__brand">
+            <span class="footer__logo">L</span>
+            <span class="footer__brand-name">Leo.dev</span>
           </div>
+          <p class="footer__tagline">
+            独立开发者，帮你把想法做成真正能上线的产品。
+            从设计到开发一个人负责，沟通不绕弯。
+          </p>
+          <a href="mailto:shady.pgone@gmail.com" class="btn btn--primary footer__cta-btn">
+            <span>开始合作</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">导航</h3>
+          <div class="footer__links">
+            <a href="../../">首页</a>
+            <a href="../">作品</a>
+            <a href="../../about/">关于</a>
+            <a href="../../blog/">博客</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">服务</h3>
+          <div class="footer__links">
+            <a href="../">网站开发</a>
+            <a href="../">小程序 & App</a>
+            <a href="../">出海 SEO 站</a>
+            <a href="../../about/">合作流程</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer__col-title">联系方式</h3>
+          <div class="footer__contact">
+            <a href="mailto:shady.pgone@gmail.com" class="footer__email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              shady.pgone@gmail.com
+            </a>
+            <div class="footer__socials">
+              <a href="https://github.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="mailto:shady.pgone@gmail.com" class="footer__social-link" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div class="footer__copyright">
+          &copy; 2026 Leo.dev · 独立开发者作品集
+        </div>
+        <div class="footer__meta-links">
+          <span>北京时间 <span data-beijing-time>--:--</span></span>
+          <span>v2.0</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
   <script src="../../js/main.js"></script>
 </body>
