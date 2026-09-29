@@ -261,48 +261,63 @@
 // ===== Cursor Follower (Desktop only) =====
 (function() {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  
-  const cursor = document.createElement('div');
+
+  var cursor = document.createElement('div');
   cursor.className = 'cursor-follower';
   document.body.appendChild(cursor);
-  
-  let mouseX = 0;
-  let mouseY = 0;
-  let cursorX = 0;
-  let cursorY = 0;
-  let isVisible = false;
-  
+
+  // Inner dot element for layered effect
+  var dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  document.body.appendChild(dot);
+
+  var mouseX = -100, mouseY = -100;
+  var cursorX = -100, cursorY = -100;
+  var dotX = -100, dotY = -100;
+  var isVisible = false;
+
   document.addEventListener('mousemove', function(e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    
+    dotX = mouseX;
+    dotY = mouseY;
+
     if (!isVisible) {
       isVisible = true;
       cursor.classList.add('is-visible');
+      dot.classList.add('is-visible');
     }
   });
-  
+
   document.addEventListener('mouseleave', function() {
     isVisible = false;
     cursor.classList.remove('is-visible');
+    dot.classList.remove('is-visible');
   });
-  
+
+  // Hide on touch devices
+  document.addEventListener('touchstart', function() {
+    cursor.style.display = 'none';
+    dot.style.display = 'none';
+  });
+
   function animate() {
-    // Smooth follow
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
-    
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    
+    // Outer ring - smooth follow with lerp
+    cursorX += (mouseX - cursorX) * 0.18;
+    cursorY += (mouseY - cursorY) * 0.18;
+
+    // Use translate3d for GPU acceleration (no layout reflow)
+    cursor.style.transform = 'translate3d(' + (cursorX - 16) + 'px, ' + (cursorY - 16) + 'px, 0)';
+    dot.style.transform = 'translate3d(' + (dotX - 3) + 'px, ' + (dotY - 3) + 'px, 0)';
+
     requestAnimationFrame(animate);
   }
-  
+
   requestAnimationFrame(animate);
-  
+
   // Hover effect on interactive elements
-  const hoverSelectors = 'a, button, .work-card, .service-card, .tech-item, .filter-tab, .skill-pill, .blog-item, .case-nav__item, .btn';
-  
+  var hoverSelectors = 'a, button, .work-card, .service-card, .tech-item, .filter-tab, .skill-pill, .blog-item, .case-nav__item, .btn, input, textarea, select';
+
   document.querySelectorAll(hoverSelectors).forEach(function(el) {
     el.addEventListener('mouseenter', function() {
       cursor.classList.add('is-hover');
@@ -310,6 +325,14 @@
     el.addEventListener('mouseleave', function() {
       cursor.classList.remove('is-hover');
     });
+  });
+
+  // Click animation
+  document.addEventListener('mousedown', function() {
+    cursor.classList.add('is-click');
+  });
+  document.addEventListener('mouseup', function() {
+    cursor.classList.remove('is-click');
   });
 })();
 
