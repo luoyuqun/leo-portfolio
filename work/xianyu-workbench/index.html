@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>闲鱼 AI 客服与自动发货工作台 — Leo.dev</title>
+  <meta name="description" content="面向闲鱼卖家的本机客服与数字商品交付工具。多账号接待、AI 自动回复、兑换码库存与自动交付，需要人工时及时提醒。">
+  <link rel="icon" type="image/png" href="../../img/favicon.png?v=7">
+  <link rel="stylesheet" href="../../css/style.css?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__brand">
+        <img class="navbar__logo-img" src="../../img/favicon.png?v=7" alt="Leo">
+        <span class="navbar__name">Leo<span class="navbar__name-dot">.dev</span></span>
+      </a>
+      <nav class="navbar__nav" aria-label="主导航">
+        <a href="../../"><span>首页</span></a>
+        <a href="../../work/" aria-current="page"><span>作品</span></a>
+        <a href="../../about/"><span>关于</span></a>
+        <a href="../../blog/"><span>博客</span></a>
+      </nav>
+      <div class="navbar__actions">
+        <div class="navbar__status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="navbar__status-text">接单中</span>
+        </div>
+        <button class="theme-toggle" aria-label="切换主题"></button>
+        <a href="../../#contact" class="btn btn--primary btn--sm">联系</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="menu-btn-wrap">
+    <button class="menu-btn" aria-label="打开菜单" aria-expanded="false">
+      <span class="menu-btn__lines"><span></span><span></span></span>
+    </button>
+  </div>
+  <div class="menu-overlay" aria-hidden="true"></div>
+  <aside class="menu" aria-label="菜单">
+    <div>
+      <div class="menu__label">导航</div>
+      <nav class="menu__links">
+        <a href="../../">首页</a>
+        <a href="../../work/" aria-current="page">作品</a>
+        <a href="../../about/">关于</a>
+        <a href="../../blog/">博客</a>
+        <a href="../../#contact">联系</a>
+      </nav>
+    </div>
+    <div class="menu__foot">
+      <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <!-- Case Header -->
+    <section class="case-hero">
+      <div class="case-hero__inner">
+        <a href="../../work/" class="case-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          返回作品
+        </a>
+
+        <div class="case-hero__head">
+          <div class="case-hero__tags">
+            <span class="tag" style="background: rgba(245, 158, 11, 0.15); color: #d97706; border-color: rgba(245, 158, 11, 0.3);">Windows 工具</span>
+            <span class="tag">AI 客服</span>
+            <span class="tag">自动交付</span>
+          </div>
+          <h1 class="case-hero__title">闲鱼 AI 客服与自动发货工作台</h1>
+          <p class="case-hero__subtitle">将多账号接待、商品资料、兑换码库存和自动交付整合到一个工作台，重复问题交给 AI，需要人工时及时提醒。</p>
+        </div>
+
+        <div class="case-hero__meta">
+          <div class="case-meta__item">
+            <span class="case-meta__label">类型</span>
+            <span class="case-meta__value">Windows 本机应用</span>
+          </div>
+          <div class="case-meta__item">
+            <span class="case-meta__label">角色</span>
+            <span class="case-meta__value">产品化开发</span>
+          </div>
+          <div class="case-meta__item">
+            <span class="case-meta__label">技术</span>
+            <span class="case-meta__value">Python / JS / SQLite</span>
+          </div>
+          <div class="case-meta__item">
+            <span class="case-meta__label">年份</span>
+            <span class="case-meta__value">2026</span>
+          </div>
+        </div>
+
+        <div class="case-hero__image">
+          <img src="../../img/work/xianyu-workbench/cover.png" alt="闲鱼 AI 客服工作台功能概念图" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Body -->
+    <section class="case-body">
+      <div class="case-body__inner">
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">项目介绍</h2>
+          <p>面向闲鱼卖家的本机客服与数字商品交付工具。通过网页管理多个账号，按商品配置接待资料和发货内容，把重复咨询、库存分配与人工提醒串成一套流程。</p>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">要解决的问题</h2>
+          <ul class="case-list">
+            <li>多个账号来回切换，商品资料容易混淆</li>
+            <li>买家重复提问，需要反复发送相同答案</li>
+            <li>兑换码和下载链接靠手动发，难以追踪库存</li>
+            <li>需要人工接手时，消息容易遗漏</li>
+          </ul>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">实现方式</h2>
+          <p>账号和商品分开管理，扫码连接店铺后在后台自动同步商品。AI 根据卖家确认的资料接待，付款核验通过后按配置交付文字内容；遇到退款、答复不确定或需要进一步沟通的情况，提醒卖家接手。</p>
+        </div>
+
+        <!-- Reception Flow -->
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">接待流程</h2>
+          <div style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border-primary); margin: 24px 0;">
+            <img src="../../img/work/xianyu-workbench/reception-flow.png" alt="三种接待流程示意：AI 持续接待、转人工、先回复再转人工" loading="lazy" style="width: 100%; display: block;">
+          </div>
+          <p>支持灵活配置接待策略：AI 持续接待、有明确意向后转人工、先回复一条再转人工，也可只提醒或暂停。</p>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">主要功能</h2>
+          <div class="case-features">
+            <div class="case-feature">
+              <div class="case-feature__icon">👤</div>
+              <h3>多账号管理</h3>
+              <p>扫码添加账号，获取昵称与头像，按账号查看商品和运行状态。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">🔄</div>
+              <h3>商品自动同步</h3>
+              <p>后台定期更新目录，失败保留已有列表；详情支持图片，视频展示取决于接口是否返回可用地址。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">💬</div>
+              <h3>灵活接待</h3>
+              <p>AI 持续接待、有明确意向后转人工、先回复一条再转人工，也可只提醒或暂停。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">⚙️</div>
+              <h3>自定义资料</h3>
+              <p>按店铺和商品配置说明、常见问题答复及回复风格。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">📦</div>
+              <h3>数字内容交付</h3>
+              <p>兑换码、下载地址、网盘链接等文字内容；付款和订单条件通过核验后才执行自动交付。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">🔗</div>
+              <h3>共享库存</h3>
+              <p>一个库存可绑定多个卖家账号和商品，分配记录可追踪，未分配的码可删除。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">🔔</div>
+              <h3>人工提醒</h3>
+              <p>支持钉钉、企业微信、飞书通知；退款与退货交由卖家确认处理。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">🖥️</div>
+              <h3>Windows 安装版</h3>
+              <p>安装后打开本机网页后台，包含管理密码修改和新版检测提醒。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- UI Screenshots -->
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">界面示例</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; margin: 24px 0;">
+            <div style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border-primary);">
+              <img src="../../img/work/xianyu-workbench/reception-ui.png" alt="接待设置界面示例（演示数据）" loading="lazy" style="width: 100%; display: block;">
+              <div style="padding: 12px 16px; font-size: 13px; color: var(--text-secondary); background: var(--bg-tertiary); border-top: 1px solid var(--border-primary);">界面示例（演示数据）— 接待设置</div>
+            </div>
+            <div style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border-primary);">
+              <img src="../../img/work/xianyu-workbench/inventory-ui.png" alt="库存界面示例（演示数据）" loading="lazy" style="width: 100%; display: block;">
+              <div style="padding: 12px 16px; font-size: 13px; color: var(--text-secondary); background: var(--bg-tertiary); border-top: 1px solid var(--border-primary);">界面示例（演示数据）— 库存管理</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">产品设计</h2>
+          <p>采用黄色作为主要强调色，将账号、商品、客服答复、库存发货和系统设置分成独立模块。桌面端导航固定，主要内容独立滚动；复杂配置使用弹窗，帮助卖家逐步完成设置。</p>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">技术与交付</h2>
+          <p>Python 后端、原生 JavaScript / HTML / CSS 管理界面、SQLite 本地存储、Windows 安装包。模型通过兼容接口接入，通知由对应平台接口发送。</p>
+          <p style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);">项目基于 XianyuAutoAgent 开源项目继续开发与产品化，保留 GPLv3 许可证及对应源码。</p>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">当前状态与使用条件</h2>
+          <p>已提供 0.2.4 Windows 安装版。需要 Windows 10/11 64 位电脑保持开机联网，以及使用者自己的闲鱼账号、AI API 密钥；模型调用费用由服务商另计。自动交付需配置商品、库存、内容及开关。</p>
+          <p style="margin-top: 8px; font-size: 14px; color: var(--text-secondary);">此页面是项目展示，不是在线演示。尚未完成软件收费日卡/周卡/月卡授权平台、工作台直接发布闲鱼商品、软件自动下载安装更新。</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="case-body__section reveal" style="display: flex; gap: 16px; flex-wrap: wrap; padding-top: 24px;">
+          <a href="../../#contact" class="btn btn--primary">咨询类似项目</a>
+          <a href="https://github.com/luoyuqun/XianyuService/releases/tag/v0.2.4" target="_blank" rel="noopener" class="btn btn--secondary" style="border: 1px solid var(--border-primary); color: var(--text-primary); background: var(--bg-tertiary);">
+            查看版本与下载
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-left: 6px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Case Navigation -->
+    <nav class="case-nav" aria-label="作品导航">
+      <a href="../shicao/" class="case-nav__item case-nav__item--prev">
+        <span class="case-nav__label">上一个</span>
+        <span class="case-nav__title">识草志</span>
+      </a>
+      <a href="../roastery/" class="case-nav__item case-nav__item--next">
+        <span class="case-nav__label">下一个</span>
+        <span class="case-nav__title">焙序咖啡</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__logo-wrap">
+          <img class="footer__logo-img" src="../../img/favicon.png?v=7" alt="Leo">
+          <span class="footer__brand-name">Leo.dev</span>
+        </div>
+        <p class="footer__tagline">独立开发者 · 帮你把想法做成真正能上线的产品</p>
+        <a href="../../#contact" class="btn btn--primary btn--sm">开始合作</a>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>导航</h4>
+          <a href="../../">首页</a>
+          <a href="../../work/">作品</a>
+          <a href="../../about/">关于</a>
+          <a href="../../blog/">博客</a>
+        </div>
+        <div class="footer__col">
+          <h4>服务</h4>
+          <a href="../../#services">网站开发</a>
+          <a href="../../#services">小程序 / App</a>
+          <a href="../../#services">出海 SEO</a>
+          <a href="../../#services">设计咨询</a>
+        </div>
+      </div>
+      <div class="footer__contact">
+        <a href="mailto:shady.pgone@gmail.com" class="footer__email">shady.pgone@gmail.com</a>
+        <div class="footer__socials">
+          <a href="https://github.com/luoyuqun" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.37 1.23-3.21-.12-.3-.54-1.515.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.635.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.21 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Leo.dev · 独立开发者 · <span data-beijing-time>--:--</span> 北京时间</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="../../js/main.js?v=7"></script>
+</body>
+</html>
