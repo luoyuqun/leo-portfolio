@@ -2624,3 +2624,399 @@ body.menu-open .menu { transform: translateX(0); }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ===== Pricing Section ===== */
+.pricing-section {
+  padding: clamp(60px, 10vh, 100px) var(--gutter);
+  background: var(--bg-primary);
+}
+
+.pricing-grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pricing-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(99, 102, 241, 0.12);
+}
+
+.pricing-card--featured {
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+}
+
+.pricing-card--featured:hover {
+  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 16px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.pricing-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.pricing-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.pricing-card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pricing-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pricing-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.pricing-card__currency {
+  font-size: 20px;
+  color: var(--text-secondary);
+}
+
+.pricing-card__amount {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.pricing-card__unit {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.pricing-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  flex: 1;
+}
+
+.pricing-card__list li {
+  position: relative;
+  padding: 8px 0 8px 28px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.pricing-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 16px;
+  height: 8px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+.pricing-card__btn {
+  align-self: stretch;
+  text-align: center;
+}
+
+/* ===== Process Section ===== */
+.process-section {
+  padding: clamp(60px, 10vh, 100px) var(--gutter);
+  background: var(--bg-tertiary);
+}
+
+.process-grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.process-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  position: relative;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.process-card:hover {
+  transform: translateY(-4px);
+}
+
+.process-card__num {
+  font-size: 36px;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.process-card__title {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.process-card__desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+}
+
+.process-card__time {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--accent);
+  background: rgba(99, 102, 241, 0.1);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-weight: 500;
+}
+
+/* ===== Testimonials Section ===== */
+.testimonials-section {
+  padding: clamp(60px, 10vh, 100px) var(--gutter);
+  background: var(--bg-primary);
+}
+
+.testimonials-grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+}
+
+.testimonial-card__rating {
+  font-size: 16px;
+  color: #f59e0b;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.testimonial-card__text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
+  flex: 1;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.testimonial-card__name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.testimonial-card__role {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ===== FAQ Section ===== */
+.faq-section {
+  padding: clamp(60px, 10vh, 100px) var(--gutter);
+  background: var(--bg-tertiary);
+}
+
+.faq-list {
+  max-width: 760px !important;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.faq-item[open] {
+  border-color: var(--accent);
+}
+
+.faq-item__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  list-style: none;
+  user-select: none;
+}
+
+.faq-item__q::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__q:hover {
+  background: rgba(99, 102, 241, 0.04);
+}
+
+.faq-item__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.faq-item[open] .faq-item__icon {
+  transform: rotate(180deg);
+}
+
+.faq-item__a {
+  padding: 0 24px 18px 24px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ===== Responsive for new sections ===== */
+@media (max-width: 1024px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .pricing-card { padding: 24px 20px; }
+  .process-card { padding: 20px 18px; }
+  .testimonial-card { padding: 20px 18px; }
+}
+
+/* ===== WeChat Contact Card ===== */
+.wechat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(99, 102, 241, 0.06);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-lg);
+  margin-top: 16px;
+}
+
+.wechat-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: #07c160;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.wechat-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.wechat-card__text {
+  flex: 1;
+}
+
+.wechat-card__title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+}
+
+.wechat-card__desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+}

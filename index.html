@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
@@ -19,7 +19,7 @@
   <nav class="navbar" aria-label="主导航">
     <div class="navbar__inner">
       <a href="./" class="navbar__brand" aria-label="Leo 独立开发者">
-        <img class="navbar__logo-img" src="img/favicon.png?v=8" alt="Leo">
+        <img class="navbar__logo-img" src="img/favicon.png?v=9" alt="Leo">
         <span class="navbar__name">Leo<span class="navbar__name-dot">.dev</span></span>
       </a>
       
@@ -114,7 +114,7 @@
             </a>
             <a href="about/" class="btn btn--ghost btn--lg">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-              <span>下载简历</span>
+              <span>了解我</span>
             </a>
           </div>
         </div>
@@ -183,7 +183,7 @@
         <div class="intro__side reveal">
           <p>
             一个人从头到尾负责，省去了设计师和开发之间的沟通成本。
-            用 AI 编程把开发周期压到很短，同时保证质量和细节。
+            产品经理出身，需求理解到位，交付周期短，质量有保证。
           </p>
           <a href="about/" class="btn btn--secondary">
             <span>了解更多</span>
@@ -209,7 +209,7 @@
         <div class="service-card">
           <div class="service-card__icon">📱</div>
           <h3 class="service-card__title">小程序与 App</h3>
-          <p class="service-card__desc">微信小程序、安卓 App。独立设计 UI，独立开发后端接口，确保产品完整可用、可上线。</p>
+          <p class="service-card__desc">微信小程序、iOS / 安卓 App。独立设计 UI，独立开发后端接口，确保产品完整可用、可上线。</p>
         </div>
         <div class="service-card">
           <div class="service-card__icon">🚀</div>
@@ -499,27 +499,245 @@
       
       <div class="stats-grid reveal-stagger">
         <div class="stat-card">
-          <div class="stat-card__number"><span data-count="50">0</span><sup>+</sup></div>
+          <div class="stat-card__number"><span data-count="28">0</span><sup>+</sup></div>
           <div class="stat-card__label">交付项目</div>
           <div class="stat-card__desc">从官网到 App，覆盖多个行业</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__number"><span data-count="5">0</span><sup>+</sup></div>
-          <div class="stat-card__label">年开发经验</div>
-          <div class="stat-card__desc">产品经理转独立开发</div>
+          <div class="stat-card__number"><span data-count="3">0</span><sup>年</sup></div>
+          <div class="stat-card__label">独立开发</div>
+          <div class="stat-card__desc">前产品经理，懂需求</div>
         </div>
         <div class="stat-card">
           <div class="stat-card__number"><span data-count="100">0</span><sup>%</sup></div>
-          <div class="stat-card__label">客户好评</div>
-          <div class="stat-card__desc">每个项目都认真交付</div>
+          <div class="stat-card__label">按时交付</div>
+          <div class="stat-card__desc">说好的时间不拖延</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__number"><span data-count="7">0</span><sup>×24h</sup></div>
+          <div class="stat-card__number"><span data-count="2">0</span><sup>h</sup></div>
           <div class="stat-card__label">响应速度</div>
-          <div class="stat-card__desc">消息基本当天回复</div>
+          <div class="stat-card__desc">工作日 2 小时内回复</div>
         </div>
       </div>
     </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing-section" id="pricing">
+      <div class="section__header reveal">
+        <div class="section-label">服务报价</div>
+        <h2 class="section__title">价格透明，不套路</h2>
+        <p style="color: var(--text-secondary); max-width: 560px; margin: 16px auto 0; text-align: center;">以下为参考起步价，实际报价根据需求复杂度确定。支持分期付款，先交付后尾款。</p>
+      </div>
+
+      <div class="pricing-grid reveal-stagger">
+        <div class="pricing-card">
+          <div class="pricing-card__head">
+            <div class="pricing-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3 class="pricing-card__title">品牌官网</h3>
+          </div>
+          <div class="pricing-card__price"><span class="pricing-card__currency">¥</span><span class="pricing-card__amount">3,999</span><span class="pricing-card__unit">起</span></div>
+          <ul class="pricing-card__list">
+            <li>响应式设计（PC + 手机）</li>
+            <li>5 个页面以内</li>
+            <li>独立域名 + HTTPS</li>
+            <li>交付周期 3-7 天</li>
+            <li>交付后 7 天免费修改</li>
+          </ul>
+          <a href="#contact" class="btn btn--primary btn--sm pricing-card__btn">咨询详情</a>
+        </div>
+
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-card__badge">最热门</div>
+          <div class="pricing-card__head">
+            <div class="pricing-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            </div>
+            <h3 class="pricing-card__title">小程序 / App</h3>
+          </div>
+          <div class="pricing-card__price"><span class="pricing-card__currency">¥</span><span class="pricing-card__amount">5,999</span><span class="pricing-card__unit">起</span></div>
+          <ul class="pricing-card__list">
+            <li>微信小程序 / iOS / Android</li>
+            <li>含后台管理 + 数据库</li>
+            <li>UI 设计 + 前后端开发</li>
+            <li>交付周期 2-4 周</li>
+            <li>交付后 30 天 Bug 免费修</li>
+          </ul>
+          <a href="#contact" class="btn btn--primary btn--sm pricing-card__btn">咨询详情</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card__head">
+            <div class="pricing-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3 class="pricing-card__title">出海 SEO 站</h3>
+          </div>
+          <div class="pricing-card__price"><span class="pricing-card__currency">¥</span><span class="pricing-card__amount">8,999</span><span class="pricing-card__unit">起</span></div>
+          <ul class="pricing-card__list">
+            <li>关键词研究 + 内容规划</li>
+            <li>多语言建站</li>
+            <li>Google 收录优化</li>
+            <li>交付周期 1-3 周</li>
+            <li>含 3 个月 SEO 数据报告</li>
+          </ul>
+          <a href="#contact" class="btn btn--primary btn--sm pricing-card__btn">咨询详情</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section process-section">
+      <div class="section__header reveal">
+        <div class="section-label">合作流程</div>
+        <h2 class="section__title">4 步开始，简单直接</h2>
+      </div>
+
+      <div class="process-grid reveal-stagger">
+        <div class="process-card">
+          <div class="process-card__num">01</div>
+          <h3 class="process-card__title">聊聊需求</h3>
+          <p class="process-card__desc">微信或邮件沟通，你说想法，我帮你理清思路，免费。</p>
+          <div class="process-card__time">约 30 分钟</div>
+        </div>
+        <div class="process-card">
+          <div class="process-card__num">02</div>
+          <h3 class="process-card__title">确定方案</h3>
+          <p class="process-card__desc">出方案文档和报价，确认后签合同、付定金（30%）。</p>
+          <div class="process-card__time">1-2 天</div>
+        </div>
+        <div class="process-card">
+          <div class="process-card__num">03</div>
+          <h3 class="process-card__title">设计与开发</h3>
+          <p class="process-card__desc">全程跟进，阶段性给你看效果，确认满意再继续。</p>
+          <div class="process-card__time">3 天-4 周</div>
+        </div>
+        <div class="process-card">
+          <div class="process-card__num">04</div>
+          <h3 class="process-card__title">上线交付</h3>
+          <p class="process-card__desc">部署上线，付尾款。交付后免费维护，Bug 随时修。</p>
+          <div class="process-card__time">1-2 天</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section">
+      <div class="section__header reveal">
+        <div class="section-label">客户评价</div>
+        <h2 class="section__title">合作过的人怎么说</h2>
+      </div>
+
+      <div class="testimonials-grid reveal-stagger">
+        <div class="testimonial-card">
+          <div class="testimonial-card__rating">★★★★★</div>
+          <p class="testimonial-card__text">"沟通很顺畅，之前找别人做官网来回扯了一周没搞清楚需求，Leo 半小时就帮我理清了。最后 5 天上线，效果比预期好。"</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">张</div>
+            <div>
+              <div class="testimonial-card__name">张老板</div>
+              <div class="testimonial-card__role">咖啡馆主理人 · 杭州</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__rating">★★★★★</div>
+          <p class="testimonial-card__text">"做的是 WMS 管理系统，逻辑比较复杂。Leo 产品经理出身，需求的理解能力确实比纯开发强。交付后有个小 bug，当天就修了。"</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">李</div>
+            <div>
+              <div class="testimonial-card__name">李总</div>
+              <div class="testimonial-card__role">仓储系统项目负责人 · 深圳</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__rating">★★★★★</div>
+          <p class="testimonial-card__text">"出海网站做好了，Google 收录很快，第二个月就有自然流量了。之前找的公司报价贵 3 倍还没做出来。性价比很高。"</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">王</div>
+            <div>
+              <div class="testimonial-card__name">王先生</div>
+              <div class="testimonial-card__role">跨境电商卖家 · 广州</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+      <div class="section__header reveal">
+        <div class="section-label">常见问题</div>
+        <h2 class="section__title">你可能想问的</h2>
+      </div>
+
+      <div class="faq-list reveal" style="max-width: 760px; margin: 0 auto;">
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>一个网站多少钱？多久能做好？</span>
+            <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__a">
+            <p>品牌官网起步价 ¥3,999，一般 3-7 天交付。复杂度越高价格相应增加，具体报价会在沟通需求后给出，不随意加价。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>我需要准备什么资料？</span>
+            <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__a">
+            <p>基本信息就行：你的业务是什么、想给谁看、有没有参考网站。不需要写文档，聊天时口头说就行，我来整理。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>怎么付款？安全吗？</span>
+            <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__a">
+            <p>签合同后付 30% 定金开始开发，验收满意后付 70% 尾款。支持支付宝、微信转账。闲鱼下单可走平台担保交易。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>做完之后需要改怎么办？</span>
+            <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__a">
+            <p>交付后 7-30 天内（视项目类型）免费修改 Bug 和小调整。超出范围的需求另报价，老客户有优惠。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>源码会给我吗？能自己维护吗？</span>
+            <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__a">
+            <p>会。全部源码和设计文件都交付给你，不锁源码、不收年费。你可以自己改，也可以后续找我维护。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>能开发票吗？</span>
+            <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__a">
+            <p>可以开普票。如有专票需求可协调，提前说明即可。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -528,7 +746,7 @@
       <div class="footer__top">
         <div class="footer__brand-col">
           <div class="footer__brand">
-            <img class="footer__logo-img" src="img/favicon.png?v=8" alt="Leo">
+            <img class="footer__logo-img" src="img/favicon.png?v=9" alt="Leo">
             <span class="footer__brand-name">Leo.dev</span>
           </div>
           <p class="footer__tagline">
@@ -568,11 +786,20 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               shady.pgone@gmail.com
             </a>
+            <div class="wechat-card">
+              <div class="wechat-card__icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.073-.044.176-.044.275 0 .355.286.641.641.641.172 0 .332-.069.451-.183l1.51-1.046a.641.641 0 0 1 .532-.105 10.5 10.5 0 0 0 2.756.367c.274 0 .544-.012.812-.034-.272-.772-.42-1.61-.42-2.483 0-4.054 3.891-7.342 8.691-7.342.274 0 .544.012.812.034C20.292 4.2 16.291 2.188 12.5 2.188h-3.809zm5.609 7.342c-3.946 0-7.146 2.583-7.146 5.772 0 3.189 3.2 5.772 7.146 5.772 3.946 0 7.146-2.583 7.146-5.772 0-3.189-3.2-5.772-7.146-5.772zm-4.273 4.273a.82.82 0 1 1 0-1.641.82.82 0 0 1 0 1.641zm6.41 0a.82.82 0 1 1 0-1.641.82.82 0 0 1 0 1.641z"/></svg>
+              </div>
+              <div class="wechat-card__text">
+                <p class="wechat-card__title">微信咨询（推荐）</p>
+                <p class="wechat-card__desc">扫码或搜索微信号，备注"闲鱼接单"</p>
+              </div>
+            </div>
             <div class="footer__socials">
-              <a href="https://github.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="GitHub">
+              <a href="https://github.com/luoyuqun" target="_blank" rel="noopener" class="footer__social-link" aria-label="GitHub">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               </a>
-              <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Twitter">
+              <a href="https://github.com/luoyuqun" target="_blank" rel="noopener" class="footer__social-link" aria-label="Twitter">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
               <a href="mailto:shady.pgone@gmail.com" class="footer__social-link" aria-label="Email">
@@ -600,6 +827,6 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="js/main.js?v=8"></script>
+  <script src="js/main.js?v=9"></script>
 </body>
 </html>
