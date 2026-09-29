@@ -2353,61 +2353,7 @@ body.menu-open .menu { transform: translateX(0); }
 .reveal-stagger.is-visible > *:nth-child(11) { transition-delay: 0.8s; }
 .reveal-stagger.is-visible > *:nth-child(12) { transition-delay: 0.88s; }
 
-/* ===== Cursor Follower (desktop only) ===== */
-@media (hover: hover) and (pointer: fine) {
-  * { cursor: none !important; }
-
-  .cursor-follower {
-    position: fixed;
-    top: 0; left: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1.5px solid var(--accent-primary);
-    pointer-events: none;
-    z-index: 99999;
-    will-change: transform;
-    opacity: 0;
-    transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out),
-                opacity 0.25s, background 0.25s, border-color 0.25s;
-  }
-
-  .cursor-follower.is-visible {
-    opacity: 0.8;
-  }
-
-  .cursor-follower.is-hover {
-    width: 56px;
-    height: 56px;
-    background: rgba(99, 102, 241, 0.12);
-    border-color: var(--accent-secondary);
-    opacity: 1;
-  }
-
-  .cursor-follower.is-click {
-    width: 20px;
-    height: 20px;
-    background: rgba(99, 102, 241, 0.2);
-  }
-
-  .cursor-dot {
-    position: fixed;
-    top: 0; left: 0;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent-primary);
-    pointer-events: none;
-    z-index: 99999;
-    will-change: transform;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .cursor-dot.is-visible {
-    opacity: 1;
-  }
-}
+/* ===== Cursor Follower removed (was laggy, reverted to native cursor) ===== */
 
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
