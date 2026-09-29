@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>识草志 — 植物识别小程序</title>
+  <meta name="description" content="识草志，一款植物识别微信小程序。拍照识花、种植日记、知识竞答、精选文章，帮你认识身边的每一株植物。">
+  <link rel="icon" type="image/png" href="../img/favicon.png?v=4">
+  <link rel="stylesheet" href="../css/style.css?v=4">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__brand">
+        <img class="navbar__logo-img" src="../img/favicon.png?v=4" alt="Leo">
+        <span class="navbar__name">Leo<span class="navbar__name-dot">.dev</span></span>
+      </a>
+      <nav class="navbar__nav" aria-label="主导航">
+        <a href="../"><span>首页</span></a>
+        <a href="../work/" aria-current="page"><span>作品</span></a>
+        <a href="../about/"><span>关于</span></a>
+        <a href="../blog/"><span>博客</span></a>
+      </nav>
+      <div class="navbar__actions">
+        <div class="navbar__status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="navbar__status-text">接单中</span>
+        </div>
+        <button class="theme-toggle" aria-label="切换主题"></button>
+        <a href="../#contact" class="btn btn--primary btn--sm">联系</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="menu-btn-wrap">
+    <button class="menu-btn" aria-label="打开菜单" aria-expanded="false">
+      <span class="menu-btn__lines"><span></span><span></span></span>
+    </button>
+  </div>
+  <div class="menu-overlay" aria-hidden="true"></div>
+  <aside class="menu" aria-label="菜单">
+    <div>
+      <div class="menu__label">导航</div>
+      <nav class="menu__links">
+        <a href="../">首页</a>
+        <a href="../work/" aria-current="page">作品</a>
+        <a href="../about/">关于</a>
+        <a href="../blog/">博客</a>
+        <a href="../#contact">联系</a>
+      </nav>
+    </div>
+    <div class="menu__foot">
+      <a href="mailto:shady.pgone@gmail.com">shady.pgone@gmail.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <!-- Case Header -->
+    <section class="case-hero">
+      <div class="case-hero__inner">
+        <a href="../work/" class="case-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          返回作品
+        </a>
+
+        <div class="case-hero__head">
+          <div class="case-hero__tags">
+            <span class="tag tag--green">微信小程序</span>
+            <span class="tag">植物识别</span>
+            <span class="tag">教育</span>
+          </div>
+          <h1 class="case-hero__title">识草志</h1>
+          <p class="case-hero__subtitle">拍照识花、种植日记、知识竞答 — 让你认识身边的每一株植物</p>
+        </div>
+
+        <div class="case-hero__meta">
+          <div class="case-meta__item">
+            <span class="case-meta__label">类型</span>
+            <span class="case-meta__value">微信小程序</span>
+          </div>
+          <div class="case-meta__item">
+            <span class="case-meta__label">角色</span>
+            <span class="case-meta__value">独立开发</span>
+          </div>
+          <div class="case-meta__item">
+            <span class="case-meta__label">技术</span>
+            <span class="case-meta__value">WXML / WXSS / JS / 云开发</span>
+          </div>
+          <div class="case-meta__item">
+            <span class="case-meta__label">年份</span>
+            <span class="case-meta__value">2024</span>
+          </div>
+        </div>
+
+        <div class="case-hero__image">
+          <img src="../img/work/shicao/home.jpg" alt="识草志首页界面" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Body -->
+    <section class="case-body">
+      <div class="case-body__inner">
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">项目背景</h2>
+          <p>很多植物爱好者在户外散步时经常看到不认识的花草，想知道名字却无从查询。识草志就是为了解决这个问题而设计的——打开小程序，拍照即可识别植物，还能记录种植日记、参与知识竞答，把学习植物知识变成一件轻松有趣的事。</p>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">核心功能</h2>
+          <div class="case-features">
+            <div class="case-feature">
+              <div class="case-feature__icon">📷</div>
+              <h3>拍照识花</h3>
+              <p>调用微信拍照接口，上传图片到云端 AI 识别，秒级返回植物名称、科属和养护建议。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">📖</div>
+              <h3>种植日记</h3>
+              <p>记录植物生长过程，支持文字 + 图片，右滑添加新习惯，双击修改信息，像手帐一样养花。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">🎮</div>
+              <h3>知识竞答</h3>
+              <p>植物知识答题闯关，全对解锁壁纸奖励，支持题目收藏和错题回顾，边玩边学。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">📑</div>
+              <h3>精选文章</h3>
+              <p>编辑精选的植物科普文章，涵盖花语、养护基础、诊断指南等，支持收藏和分享。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">🌿</div>
+              <h3>种植指南</h3>
+              <p>分步种植指南和小贴士，从播种到开花，每个阶段都有详细的图文指导。</p>
+            </div>
+            <div class="case-feature">
+              <div class="case-feature__icon">👤</div>
+              <h3>个人中心</h3>
+              <p>打卡记录、收藏管理、意见反馈，养成式的个人植物档案。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screenshot Gallery -->
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">界面展示</h2>
+          <div class="case-gallery">
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/home.jpg" alt="首页" loading="lazy">
+              <span class="case-gallery__caption">首页 — 轮播 banner + 功能入口</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/scan.jpg" alt="拍照识别" loading="lazy">
+              <span class="case-gallery__caption">识花 — 拍照识别入口</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/scan-result.jpg" alt="识别结果" loading="lazy">
+              <span class="case-gallery__caption">识别结果 — 植物详情</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/featured.jpg" alt="精选" loading="lazy">
+              <span class="case-gallery__caption">精选 — 科普文章列表</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/quiz.jpg" alt="知识竞答" loading="lazy">
+              <span class="case-gallery__caption">竞答 — 植物知识答题</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/diary.jpg" alt="种植日记" loading="lazy">
+              <span class="case-gallery__caption">种植日记 — 空状态</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/guide.jpg" alt="种植指南" loading="lazy">
+              <span class="case-gallery__caption">种植指南 — 分步养护</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/card-detail.jpg" alt="卡片详情" loading="lazy">
+              <span class="case-gallery__caption">卡片详情 — 植物图鉴</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/article.jpg" alt="文章详情" loading="lazy">
+              <span class="case-gallery__caption">文章详情 — 图文阅读</span>
+            </div>
+            <div class="case-gallery__item">
+              <img src="../img/work/shicao/profile.jpg" alt="个人中心" loading="lazy">
+              <span class="case-gallery__caption">我的 — 个人档案</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">技术实现</h2>
+          <p>基于微信小程序原生框架开发，使用 WXML + WXSS + JavaScript。云端接入植物识别 AI 接口，返回结果后展示植物百科信息。数据存储使用微信云开发 CloudBase，包括用户日记、收藏、答题记录等。底部 TabBar 五个页面，页面间通过路由跳转传参，支持图片预览、富文本解析（wxParse）等能力。</p>
+        </div>
+
+        <div class="case-body__section reveal">
+          <h2 class="case-body__heading">设计亮点</h2>
+          <ul class="case-list">
+            <li>统一绿色品牌色（#009f72），贯穿整个 App 的导航栏、按钮、图标</li>
+            <li>手绘风植物插画，温馨亲和的视觉调性</li>
+            <li>竞答全对解锁壁纸的激励机制，提升用户粘性</li>
+            <li>种植日记支持右滑添加、双击修改的快捷手势操作</li>
+            <li>5 Tab 底部导航 + 二级页面返回，符合微信小程序交互习惯</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Case Navigation -->
+    <nav class="case-nav" aria-label="作品导航">
+      <a href="../daily-reader/" class="case-nav__item case-nav__item--prev">
+        <span class="case-nav__label">上一个</span>
+        <span class="case-nav__title">日读</span>
+      </a>
+      <a href="../roastery/" class="case-nav__item case-nav__item--next">
+        <span class="case-nav__label">下一个</span>
+        <span class="case-nav__title">焙序咖啡</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__logo-wrap">
+          <img class="footer__logo-img" src="../img/favicon.png?v=4" alt="Leo">
+          <span class="footer__brand-name">Leo.dev</span>
+        </div>
+        <p class="footer__tagline">独立开发者 · 帮你把想法做成真正能上线的产品</p>
+        <a href="../#contact" class="btn btn--primary btn--sm">开始合作</a>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>导航</h4>
+          <a href="../">首页</a>
+          <a href="../work/">作品</a>
+          <a href="../about/">关于</a>
+          <a href="../blog/">博客</a>
+        </div>
+        <div class="footer__col">
+          <h4>服务</h4>
+          <a href="../#services">网站开发</a>
+          <a href="../#services">小程序 / App</a>
+          <a href="../#services">出海 SEO</a>
+          <a href="../#services">设计咨询</a>
+        </div>
+      </div>
+      <div class="footer__contact">
+        <a href="mailto:shady.pgone@gmail.com" class="footer__email">shady.pgone@gmail.com</a>
+        <div class="footer__socials">
+          <a href="https://github.com/luoyuqun" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.37 1.23-3.21-.12-.3-.54-1.515.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.635.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.21 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 Leo.dev · 独立开发者 · <span data-beijing-time>--:--</span> 北京时间</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="../js/main.js?v=4"></script>
+</body>
+</html>
