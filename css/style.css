@@ -329,6 +329,18 @@ h1, h2, h3, h4 {
   transform: scale(1.05);
 }
 
+.navbar__logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.navbar__brand:hover .navbar__logo-img {
+  transform: scale(1.05);
+}
+
 .navbar__name {
   font-size: var(--text-lg);
   font-weight: 600;
@@ -2165,6 +2177,13 @@ body.menu-open .menu { transform: translateX(0); }
   font-size: 16px;
   font-weight: 700;
   color: white;
+}
+
+.footer__logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
 }
 
 .footer__brand-name {
